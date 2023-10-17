@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	>
+<!-- 
+	스프링 DI 컨테이너 (bean container, Ioc container) 사용 단계
+	1. spring-context dependency 추가 (pom.xml)
+	2. spring bean configuration file 작성(bean metadata file)
+		1) 컨테이너에 의해 생명주기가 관리될 객체(bean) 등록 : bean(class, id ...)
+		2) 등록된 빈들간의 의존관계 형성(의존성 주입)
+			- setter injection(optional 전략 주입) : setter method를 이용한 주입
+			- constructor injection(필수 전략 주입) : 생성자를 이용한 주입
+	3. 어플리케이션 엔트리 포인트에서 spring container(ApplicationContext 구현체) 객체 생성
+ -->
+ 
+<!--
+	컨테이너의 객체 생명주기 관리 특성
+	
+	1. 특별한 설정(scope)이 없는 한, 등록된 빈들을 singleton 으로 관리함.
+		scope="singleton"
+	2. 특별한 설정(lazy-init)이 없는 한, 컨테이너는 등록된 빈의 객체를 일시에 생성하고, 초기화 시킴.
+		lazy-init="false"
+	3. depends-on 으로 생성 순서 제어 가능. : 의존성 주입은 아니다..
+	
+	4. 등록된 빈의 생명주기 관리시에 각 생명주기 이벤트 내에서 호출될 수 있는 call-back 메소드 구조를 가짐.
+		: init 메소드는 객체 생성 후, 모든 의존성 주입이 완료된 이후에 실행된다.
+ -->
+ 	<bean class="kr.or.ddit.case1.dao.Case1SampleDAOImpl_Oracle" id="case1SampleDAOImpl_Oracle"
+	 	init-method="init"
+	 	destroy-method="destroy"
+ 	/>
+ 	
+ 	<bean class="kr.or.ddit.case1.service.Case1SampleServiceImpl" id="case1SampleServiceImpl"
+ 	 p:dao-ref="case1SampleDAOImpl_Oracle"
+	 	init-method="init"
+	 	destroy-method="destroy"
+ 	 />
+ 	
+ 	<bean class="kr.or.ddit.case1.presentation.Case1SamplePresentation" id="case1SamplePresentation" 
+	 	c:service-ref="case1SampleServiceImpl"
+ 	/>
+</beans>

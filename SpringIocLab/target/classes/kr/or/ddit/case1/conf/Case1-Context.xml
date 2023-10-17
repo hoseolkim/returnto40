@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 		Case1SampleDAO dao = new Case1SampleDAOImpl_Oracle(); -->
+<!-- 		Case1SampleService service = new Case1SampleServiceImpl(); -->
+<!-- 		((Case1SampleServiceImpl)service).setDao(dao); -->
+<!-- 		Case1SamplePresentation presentation = new Case1SamplePresentation(service); -->
+	<bean class="kr.or.ddit.case1.dao.Case1SampleDAOImpl_Oracle" id="dao_oracle" />
+	<bean class="kr.or.ddit.case1.dao.Case1SampleDAOImpl_Mysql" id="dao_mysql" />
+	<bean class="kr.or.ddit.case1.service.Case1SampleServiceImpl" id="service" p:dao-ref="dao_mysql" />
+	<bean class="kr.or.ddit.case1.presentation.Case1SamplePresentation" id="case1SamplePresentation"
+		c:service-ref="service" 
+	 />
+	
+	
+</beans>

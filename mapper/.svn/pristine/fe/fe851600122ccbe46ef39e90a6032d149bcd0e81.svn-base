@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.ddit.login.dao.LoginDAO">
+	<select id="studentLogin" parameterType="StudentVO" resultType="StudentVO">
+		SELECT
+			STD_NO
+			, STD_NAME
+			, STD_ID
+			, STD_TELNO
+			, STD_ADD
+			, PRO_CD
+		FROM
+			STUDENT
+		WHERE
+			STD_NO = #{stdNo}
+	</select>
+	<select id="professorLogin" parameterType="ProfessorVO" resultType="ProfessorVO">
+		SELECT
+			PRO_CD
+			, PRO_NAME
+			, PRO_MAJOR
+			, PRO_DEPTNO
+			, PRO_TELNO
+		FROM
+			PROFESSOR
+		WHERE
+			PRO_CD = #{proCd}
+	</select>
+</mapper>
