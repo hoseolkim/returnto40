@@ -1,0 +1,19 @@
+package com.springboard.board.service;
+
+import com.springboard.board.vo.FreeBoardVO;
+
+public class BoardServiceImpl implements BoardService {
+
+	@Override
+	public void createBoard(FreeBoardVO board) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public FreeBoardVO retrieveBoard(int boNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

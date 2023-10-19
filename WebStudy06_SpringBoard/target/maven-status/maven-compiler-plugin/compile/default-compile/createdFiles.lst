@@ -1,6 +1,0 @@
-com\springboard\board\vo\FreeBoardVO.class
-com\springboard\board\dao\BoardDAO.class
-com\springboard\board\controller\BoardInsertController.class
-com\springboard\board\controller\BoardRetrieveController.class
-com\springboard\board\BoardNotFoundException.class
-com\springboard\board\service\BoardService.class

@@ -20,7 +20,7 @@
       <a class="nav-link text-white" href="<c:url value='/buyer'/>">제조사관리</a>
     </li>
     <li class="nav-item text-nowrap">
-      <a class="nav-link text-white" href="#">자유게시판</a>
+      <a class="nav-link text-white" href="<c:url value='/board/boardList.do'/>">자유게시판</a>
     </li>
     <li class="nav-item text-nowrap">
       <a class="nav-link text-white" href="?lang=en">영문</a>

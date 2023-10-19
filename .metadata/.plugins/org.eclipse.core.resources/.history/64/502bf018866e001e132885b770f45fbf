@@ -1,0 +1,22 @@
+package com.springboard.board.controller;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+
+import com.springboard.board.service.BoardService;
+
+@Controller
+public class BoardInsertController {
+	
+	@Inject
+	private BoardService serivce;
+	
+	public String retrieveBoard(
+		int boNo
+		, Model model
+	) {
+		
+	}
+}

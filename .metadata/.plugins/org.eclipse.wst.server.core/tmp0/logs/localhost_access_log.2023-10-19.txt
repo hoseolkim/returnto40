@@ -582,3 +582,16 @@
 0:0:0:0:0:0:0:1 - - [19/Oct/2023:18:16:58 +0900] "GET /WebStudy06_SpringBoard/resources/js/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js HTTP/1.1" 200 80663
 0:0:0:0:0:0:0:1 - - [19/Oct/2023:18:16:58 +0900] "GET /WebStudy06_SpringBoard/resources/js/bootstrap-5.3.2-dist/css/bootstrap.min.css HTTP/1.1" 200 232948
 0:0:0:0:0:0:0:1 - - [19/Oct/2023:18:16:58 +0900] "GET /WebStudy06_SpringBoard/resources/js/bootstrap-5.3.2-dist/css/bootstrap.min.css.map HTTP/1.1" 200 589161
+127.0.0.1 - - [19/Oct/2023:22:37:20 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [19/Oct/2023:22:37:55 +0900] "GET /WebStudy06/ HTTP/1.1" 404 822
+0:0:0:0:0:0:0:1 - - [19/Oct/2023:22:37:55 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [19/Oct/2023:22:38:18 +0900] "GET /WebStudy06_SpringBoard/ HTTP/1.1" 200 4312
+0:0:0:0:0:0:0:1 - - [19/Oct/2023:22:38:18 +0900] "GET /WebStudy06_SpringBoard/resources/css/dashboard.css HTTP/1.1" 200 1695
+0:0:0:0:0:0:0:1 - - [19/Oct/2023:22:38:18 +0900] "GET /WebStudy06_SpringBoard/resources/js/jquery.serializejson.js HTTP/1.1" 200 15952
+0:0:0:0:0:0:0:1 - - [19/Oct/2023:22:38:18 +0900] "GET /WebStudy06_SpringBoard/resources/js/jquery-3.7.1.min.js HTTP/1.1" 200 87535
+0:0:0:0:0:0:0:1 - - [19/Oct/2023:22:38:18 +0900] "GET /WebStudy06_SpringBoard/resources/js/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js HTTP/1.1" 200 80669
+0:0:0:0:0:0:0:1 - - [19/Oct/2023:22:38:18 +0900] "GET /WebStudy06_SpringBoard/resources/js/bootstrap-5.3.2-dist/css/bootstrap.min.css HTTP/1.1" 200 232953
+0:0:0:0:0:0:0:1 - - [19/Oct/2023:22:41:24 +0900] "GET /WebStudy06_SpringBoard/member/memberList.do;jsessionid=862382D0F02D3EB6871EB56442BD9133 HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [19/Oct/2023:22:41:26 +0900] "GET /WebStudy06_SpringBoard/prod/prodList.do;jsessionid=862382D0F02D3EB6871EB56442BD9133 HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [19/Oct/2023:22:41:27 +0900] "GET /WebStudy06_SpringBoard/prod/ajax/prodListUI.do;jsessionid=862382D0F02D3EB6871EB56442BD9133 HTTP/1.1" 404 721
+185.224.128.199 - - [19/Oct/2023:22:51:55 +0900] "GET / HTTP/1.1" 404 766

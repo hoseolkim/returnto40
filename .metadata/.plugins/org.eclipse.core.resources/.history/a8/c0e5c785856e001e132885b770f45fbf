@@ -1,0 +1,13 @@
+package com.springboard.board.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class BoardInsertController {
+	
+	public String retrieveBoard(
+		int boNo
+	) {
+		
+	}
+}
