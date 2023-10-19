@@ -1,0 +1,12 @@
+package kr.or.ddit.servlet01;
+
+import javax.servlet.http.HttpServlet;
+
+
+public class ImageFormServlet extends HttpServlet{
+	
+	
+	
+	
+	
+}

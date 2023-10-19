@@ -1,0 +1,17 @@
+package kr.or.ddit.buyer.controller;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import kr.or.ddit.AbstractRootContextTest;
+
+
+class BuyerRetrieveControllerTest extends AbstractRootContextTest{
+
+	@Test
+	void testBuyerDetail() {
+		fail("Not yet implemented");
+	}
+
+}

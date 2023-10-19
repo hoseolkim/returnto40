@@ -1,0 +1,5 @@
+package egovframework.example.dummy.dao;
+
+public class DummyDAO {
+
+}

@@ -1,0 +1,69 @@
+package kr.or.ddit.buyer.service;
+
+import java.io.File;
+import java.io.IOException;
+
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Service;
+
+import kr.or.ddit.buyer.dao.BuyerDAO;
+import kr.or.ddit.common.enumpkg.ServiceResult;
+import kr.or.ddit.vo.BuyerVO;
+
+@Service
+public class BuyerServiceImpl implements BuyerService {
+	
+	@Value("#{appInfo.prodImagesUrl}")
+	private String prodImagesUrl;
+	@Value("#{appInfo.prodImagesUrl}")
+	private Resource prodImages;
+	
+	private File saveFolder;
+	
+	@PostConstruct
+	public void init() throws IOException {
+		saveFolder = prodImages.getFile();
+	}
+	
+	@Inject
+	private BuyerDAO dao;
+	
+	@Override
+	public BuyerVO retrieveBuyer(String buyerId) {
+		BuyerVO buyer = null;
+		
+		buyer = dao.selectBuyer(buyerId);
+		if(buyer == null) {
+			// 추후 수정 예정
+			throw new RuntimeException();
+		}
+		return buyer;
+	}
+
+	@Override
+	public ServiceResult createBuyer(BuyerVO buyer) {
+		ServiceResult result = null;
+		
+		int rowcnt = dao.insertBuyer(buyer);
+		
+		if(rowcnt > 0) {
+			try {
+				result = ServiceResult.OK;
+				buyer.saveFile(saveFolder);
+			} catch (IllegalStateException | IOException e) {
+				throw new RuntimeException(e);
+			}
+		}else {
+			result = ServiceResult.FAIL;
+		}
+		
+		return result;
+	}
+
+	
+	
+}

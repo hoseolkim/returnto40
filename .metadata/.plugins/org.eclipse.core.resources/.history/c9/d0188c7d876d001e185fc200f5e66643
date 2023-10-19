@@ -1,0 +1,40 @@
+package kr.or.ddit.buyer.controller;
+
+import java.io.IOException;
+
+import javax.inject.Inject;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import kr.or.ddit.buyer.service.BuyerService;
+import kr.or.ddit.vo.BuyerVO;
+
+@Controller
+public class BuyerImageDownloadController {
+	
+	@Inject
+	private BuyerService service;
+	
+	@Value("#{appInfo.buyerImages}")
+	private Resource buyerImages;
+	
+	
+	@GetMapping("/buyer/{buyerId}/buyerImage")
+	public ResponseEntity<Resource> buyerImageDownload(
+		@PathVariable String buyerId
+	) throws IOException {
+		BuyerVO buyer = service.retrieveBuyer(buyerId);
+		
+		String filename = buyer.getBuyerImg();
+		
+		Resource imageFile = buyerImages.createRelative(filename);
+		
+		
+	}
+	
+}

@@ -1,12 +1,12 @@
 package kr.or.ddit.adrs.controller;
 
-import kr.or.ddit.mvc.annotation.stereotype.Controller;
-import kr.or.ddit.mvc.annotation.stereotype.RequestMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class AddressUIController{
 	
-	@RequestMapping("/adrs/view")
+	@GetMapping("/adrs/view")
 	public String adrsView(){
 		return  "adrs/adrsView";
 	}

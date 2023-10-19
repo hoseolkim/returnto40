@@ -1,0 +1,17 @@
+package com.springboard.spring;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
+import org.springframework.test.context.web.WebAppConfiguration;
+
+@SpringJUnitWebConfig(locations = "file:src/main/resources/com/springboard/spring/conf/application-context.xml")
+class RootContainerLoadTest {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

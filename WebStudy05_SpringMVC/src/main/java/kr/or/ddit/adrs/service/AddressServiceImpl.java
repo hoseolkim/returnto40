@@ -2,13 +2,18 @@ package kr.or.ddit.adrs.service;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Service;
+
 import kr.or.ddit.adrs.dao.AddressDAO;
-import kr.or.ddit.adrs.dao.AddressDAOImpl;
 import kr.or.ddit.vo.AddressVO;
 
+@Service
 public class AddressServiceImpl implements AddressService {
-	// 결합력 최상구조
-	private AddressDAO dao = new AddressDAOImpl();
+	
+	@Inject
+	private AddressDAO dao;
 
 	@Override
 	public boolean createAddress(AddressVO adrsVO) {

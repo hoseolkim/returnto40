@@ -1,0 +1,23 @@
+package com.springboard.board.vo;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@Data
+@EqualsAndHashCode(of = "boNo")
+public class FreeBoardVO implements Serializablei{
+	private Integer boNo;
+	private String boTitle;
+	private String boWriter;
+	private String boIp;
+	private String boMail;
+	private String boPass;
+	@ToString.Exclude
+	private String boContent;
+	private LocalDateTime boDate;
+	private Integer boHit;
+}

@@ -22,7 +22,7 @@ class BuyerRetrieveControllerTest extends AbstractRootContextTest{
 	
 	@Test
 	void testBuyerDetail() {
-		String buyerId = "P10202";
+		String buyerId = "P10193";
 		
 		BuyerVO buyer = service.retrieveBuyer(buyerId);
 		

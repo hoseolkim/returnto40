@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.ddit.buyer.dao.BuyerDAO">
+	<resultMap type="BuyerVO" id="buyer" autoMapping="true">
+		<id column="BUYER_ID" property="buyerId"/>
+		<association property="lprod" javaType="LprodVO" autoMapping="true">
+			<result column="LPROD_NM" property="lprodNm"/>
+		</association>
+		<collection property="prodList" ofType="ProdVO" autoMapping="true" >
+		</collection>
+	</resultMap>
+	
+	<sql id="buyerJoin" >
+		FROM BUYER INNER JOIN LPROD ON (BUYER_LGU = LPROD_GU)
+				LEFT OUTER JOIN PROD ON(BUYER_ID = PROD_BUYER) 
+	</sql>
+	
+	<select id="selectBuyer" parameterType="String" resultMap="buyer">
+		SELECT
+			BUYER_ID
+			, BUYER_NAME
+			, BUYER_LGU
+			, BUYER_BANK
+			, BUYER_BANKNO
+			, BUYER_BANKNAME
+			, BUYER_ZIP
+			, BUYER_ADD1
+			, BUYER_ADD2
+			, BUYER_COMTEL
+			, BUYER_FAX
+			, BUYER_MAIL
+			, BUYER_CHARGER
+			, BUYER_TELEXT
+			, BUYER_IMG
+			, LPROD_NM
+			, PROD_ID
+			, PROD_NAME
+			, PROD_LGU
+			, PROD_BUYER
+			, PROD_COST
+			, PROD_PRICE
+			, PROD_SALE
+			, PROD_OUTLINE
+			, PROD_DETAIL
+			, PROD_IMG
+			, PROD_TOTALSTOCK
+			, PROD_INSDATE
+			, PROD_PROPERSTOCK
+			, PROD_SIZE
+			, PROD_COLOR
+			, PROD_DELIVERY
+			, PROD_UNIT
+			, PROD_QTYIN
+			, PROD_QTYSALE
+			, PROD_MILEAGE
+		<include refid="buyerJoin" />
+		WHERE
+			BUYER_ID = #{buyerId}
+	</select>
+	<insert id="insertBuyer" parameterType="BuyerVO" >
+		<selectKey order="BEFORE" keyProperty="buyerId" resultType="String">
+			SELECT
+				#{buyerLgu} || LPAD(TO_CHAR(NVL(MAX(TO_NUMBER(SUBSTR(BUYER_ID,5))),0)+1),2,'0')
+			FROM
+				BUYER
+			WHERE
+    			SUBSTR(BUYER_ID,1,4) = #{buyerLgu}
+		</selectKey>
+		INSERT INTO BUYER (
+		    BUYER_ID
+		    , BUYER_NAME
+		    , BUYER_LGU
+		    , BUYER_BANK
+		    , BUYER_BANKNO
+		    , BUYER_BANKNAME
+		    , BUYER_ZIP
+		    , BUYER_ADD1
+		    , BUYER_ADD2
+		    , BUYER_COMTEL
+		    , BUYER_FAX
+		    , BUYER_MAIL
+		    , BUYER_CHARGER
+		    , BUYER_TELEXT
+		    , BUYER_IMG
+		) VALUES (
+			#{buyerId,jdbcType=CHAR}
+			, #{buyerName,jdbcType=VARCHAR}
+			, #{buyerLgu,jdbcType=CHAR}
+			, #{buyerBank,jdbcType=VARCHAR}
+			, #{buyerBankno,jdbcType=VARCHAR}
+			, #{buyerBankname,jdbcType=VARCHAR}
+			, #{buyerZip,jdbcType=CHAR}
+			, #{buyerAdd1,jdbcType=VARCHAR}
+			, #{buyerAdd2,jdbcType=VARCHAR}
+			, #{buyerComtel,jdbcType=VARCHAR}
+			, #{buyerFax,jdbcType=VARCHAR}
+			, #{buyerMail,jdbcType=VARCHAR}
+			, #{buyerCharger,jdbcType=VARCHAR}
+			, #{buyerTelext,jdbcType=VARCHAR}
+			, #{buyerImg,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<update id="updateBuyer" parameterType="BuyerVO">
+		UPDATE BUYER
+		SET
+			BUYER_NAME = #{buyerName,jdbcType=VARCHAR}
+			, BUYER_LGU = #{buyerLgu,jdbcType=CHAR}
+			, BUYER_BANK = #{buyerBank,jdbcType=VARCHAR}
+			, BUYER_BANKNO = #{buyerBankno,jdbcType=VARCHAR}
+			, BUYER_BANKNAME = #{buyerBankname,jdbcType=VARCHAR}
+			, BUYER_ZIP = #{buyerZip,jdbcType=CHAR}
+			, BUYER_ADD1 = #{buyerAdd1,jdbcType=VARCHAR}
+			, BUYER_ADD2 = #{buyerAdd2,jdbcType=VARCHAR}
+			, BUYER_COMTEL = #{buyerComtel,jdbcType=VARCHAR}
+			, BUYER_FAX = #{buyerFax,jdbcType=VARCHAR}
+			, BUYER_MAIL = #{buyerMail,jdbcType=VARCHAR}
+			, BUYER_CHARGER = #{buyerCharger,jdbcType=VARCHAR}
+			, BUYER_TELEXT = #{buyerTelext,jdbcType=VARCHAR}
+		<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(buyerImg)">
+			, BUYER_IMG = #{buyerImg,jdbcType=VARCHAR}
+		</if>
+		WHERE
+			BUYER_ID = #{buyerId}
+	</update>
+	
+	<sql id="buyerWhereFrag">
+		<trim prefix="WHERE" prefixOverrides="AND">
+			<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(detailCondition.buyerLgu)">
+				AND BUYER_LGU = #{detailCondition.buyerLgu}
+			</if>
+			<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(detailCondition.buyerAdd1)">
+				AND BUYER_ADD1 = #{detailCondition.buyerAdd1}
+			</if>
+			<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(detailCondition.buyerName)">
+				AND INSTR(BUYER_NAME, #{detailCondition.buyerName}) > 0
+			</if>
+		</trim>
+	</sql>
+	
+	<select id="selectTotalRecord" parameterType="PaginationInfo" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="buyerJoin" />
+		<include refid="buyerWhereFrag"/>
+	</select>
+	
+	<select id="selectBuyerList" parameterType="PaginationInfo" resultMap="buyer">
+		SELECT
+			A.*
+		FROM (
+			SELECT
+				ROWNUM RNUM, BUYER_ID, BUYER_NAME, BUYER_LGU, BUYER_BANK, BUYER_BANKNO
+				, BUYER_BANKNAME, BUYER_ZIP, BUYER_ADD1, BUYER_ADD2	, BUYER_COMTEL
+				, BUYER_FAX, BUYER_MAIL, BUYER_CHARGER, BUYER_TELEXT, BUYER_IMG
+				, LPROD_NM
+			FROM
+				BUYER INNER JOIN LPROD ON (BUYER_LGU = LPROD_GU)
+			<include refid="buyerWhereFrag"/>
+		) A
+		WHERE
+			RNUM BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	
+	
+	
+</mapper>
+
+
+
+
+

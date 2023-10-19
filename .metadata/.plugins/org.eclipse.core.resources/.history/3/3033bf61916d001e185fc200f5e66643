@@ -1,0 +1,56 @@
+package kr.or.ddit.buyer.controller;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.or.ddit.buyer.service.BuyerService;
+import kr.or.ddit.common.enumpkg.ServiceResult;
+import kr.or.ddit.validate.grouphint.UpdateGroup;
+import kr.or.ddit.vo.BuyerVO;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Controller
+@RequestMapping("/buyer")
+public class BuyerModifyController {
+	
+	@Inject
+	private BuyerService service;
+	
+	
+	@GetMapping("{buyerId}/form")
+	public String buyerUpdateForm(
+		@PathVariable String buyerId
+	) {
+		
+		return "buyer/buyerEdit";
+	}
+	
+	@PutMapping("{buyerID}")
+	public String buyerUpdate(
+		@ModelAttribute("buyer") @Validated(UpdateGroup.class) BuyerVO buyer
+		, Errors errors
+		, Model model
+	) {
+		if(!errors.hasErrors()) {
+			ServiceResult result = service.modifyBuyer(buyer);
+			
+			
+		}else {
+			return "buyer/buyerEdit";
+		}
+		
+		
+		return "redirect:/buyer/{buyerID}";
+	}
+	
+}

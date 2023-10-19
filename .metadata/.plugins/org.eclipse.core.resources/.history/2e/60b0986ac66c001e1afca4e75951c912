@@ -1,0 +1,13 @@
+package kr.or.ddit.buyer.service;
+
+import kr.or.ddit.vo.BuyerVO;
+
+public class BuyerServiceImpl implements BuyerService {
+
+	@Override
+	public BuyerVO retrieveBuyer(String buyerId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

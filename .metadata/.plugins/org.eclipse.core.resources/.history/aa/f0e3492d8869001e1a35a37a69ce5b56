@@ -1,0 +1,14 @@
+package kr.or.ddit.jdbc;
+
+import org.springframework.stereotype.Service;
+
+import kr.or.ddit.jdbc.dao.BuyerDAO;
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class BuyerServiceImpl {
+	
+	private BuyerDAO dao;
+	private int test;
+}

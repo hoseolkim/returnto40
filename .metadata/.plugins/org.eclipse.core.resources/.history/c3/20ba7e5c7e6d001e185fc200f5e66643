@@ -1,0 +1,41 @@
+package kr.or.ddit.jdbc;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Service;
+
+import kr.or.ddit.jdbc.dao.BuyerDAO;
+import kr.or.ddit.jdbc.vo.BuyerVO;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+@RequiredArgsConstructor
+public class BuyerServiceImpl {
+	
+	@Value("#{appInfo.prodImagesUrl}")
+	private String prodImagesUrl;
+	@Value("#{appInfo.prodImagesUrl}")
+	private Resource prodImages;
+	
+	private File saveFolder;
+	
+	@PostConstruct
+	public void init() throws IOException {
+		saveFolder = prodImages.getFile();
+	}
+	
+	private final BuyerDAO dao;
+	
+	public List<BuyerVO> retrieveBuyerList(){
+		return dao.selectBuyerList();
+	}
+}

@@ -18,8 +18,6 @@ import kr.or.ddit.common.enumpkg.ServiceResult;
 import kr.or.ddit.filter.wrapper.MemberVOWrapper;
 import kr.or.ddit.member.service.MemberService;
 import kr.or.ddit.member.service.MemberServiceImpl;
-import kr.or.ddit.utils.ValidationUtils;
-import kr.or.ddit.validate.grouphint.DeleteGroup;
 import kr.or.ddit.vo.MemberVO;
 
 @Controller
@@ -42,27 +40,21 @@ public class MemberDeleteController{
 		inputData.setMemPass(password);
 
 		Map<String, List<String>> errors = new HashMap<>();
-		boolean valid = ValidationUtils.validate(inputData, errors, DeleteGroup.class);
 		String viewName = null;
-		if(valid) {
-			ServiceResult result = service.removeMember(inputData);
-			switch (result) {
-			case INVALIDPASSWORD:
-				viewName = "redirect:/mypage";
-				redirectAttributes.addFlashAttribute("message", "비밀 번호 오류"); // flash attribute
-				break;
-			case OK:
-				viewName = "redirect:/";
-				session.invalidate();
-				break;
-			default:
-				viewName = "redirect:/mypage";
-				redirectAttributes.addFlashAttribute("message", "서버 오류"); // flash attribute
-				break;
-			}
-		}else {
+		ServiceResult result = service.removeMember(inputData);
+		switch (result) {
+		case INVALIDPASSWORD:
 			viewName = "redirect:/mypage";
-			redirectAttributes.addFlashAttribute("message", "비밀 번호 누락"); // flash attribute
+			redirectAttributes.addFlashAttribute("message", "비밀 번호 오류"); // flash attribute
+			break;
+		case OK:
+			viewName = "redirect:/";
+			session.invalidate();
+			break;
+		default:
+			viewName = "redirect:/mypage";
+			redirectAttributes.addFlashAttribute("message", "서버 오류"); // flash attribute
+			break;
 		}
 		
 		return viewName;

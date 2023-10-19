@@ -1,0 +1,24 @@
+package com.springboard.spring;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
+import org.springframework.test.context.web.WebAppConfiguration;
+
+@SpringJUnitWebConfig(locations = "file:src/main/resources/com/springboard/spring/conf/*-context.xml")
+class RootContainerLoadTest {
+	
+	@Resource(name = "dataSource")
+	private DataSource dataSource;
+	
+	
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

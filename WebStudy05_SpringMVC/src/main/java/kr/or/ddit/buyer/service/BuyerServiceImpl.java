@@ -1,15 +1,44 @@
 package kr.or.ddit.buyer.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.or.ddit.buyer.dao.BuyerDAO;
+import kr.or.ddit.common.enumpkg.ServiceResult;
 import kr.or.ddit.vo.BuyerVO;
+import kr.or.ddit.vo.PaginationInfo;
 
 @Service
 public class BuyerServiceImpl implements BuyerService {
-
+	
+	@Value("#{appInfo.buyerImages}")
+	private Resource buyerImages;
+	
+	private File saveFolder;
+	
+	// 파일 저장 메소드
+	private void saveFile(BuyerVO buyer) {
+		try {
+			buyer.saveFile(saveFolder);
+		} catch (IllegalStateException | IOException e) {
+			throw new RuntimeException(e);
+		}
+		
+	}
+	
+	@PostConstruct
+	public void init() throws IOException {
+		saveFolder = buyerImages.getFile();
+	}
+	
 	@Inject
 	private BuyerDAO dao;
 	
@@ -25,4 +54,45 @@ public class BuyerServiceImpl implements BuyerService {
 		return buyer;
 	}
 
+	@Override
+	public ServiceResult createBuyer(BuyerVO buyer) {
+		ServiceResult result = null;
+		
+		int rowcnt = dao.insertBuyer(buyer);
+		
+		if(rowcnt > 0) {
+			result = ServiceResult.OK;
+			saveFile(buyer);
+		}else {
+			result = ServiceResult.FAIL;
+		}
+		
+		return result;
+	}
+	
+
+	@Override
+	public ServiceResult modifyBuyer(BuyerVO buyer) {
+		ServiceResult result = null;
+		int rowcnt = dao.updateBuyer(buyer);
+		
+		if(rowcnt > 0) {
+			result = ServiceResult.OK;
+			saveFile(buyer);
+		}else {
+			result = ServiceResult.FAIL;
+		}
+		
+		return result;
+	}
+
+	@Override
+	public void retrieveBuyerList(PaginationInfo<BuyerVO> paging) {
+		int totalCount = dao.selectTotalRecord(paging);
+		paging.setTotalRecord(totalCount);
+		List<BuyerVO> dataList = dao.selectBuyerList(paging);
+		paging.setDataList(dataList);
+	}
+	
+	
 }

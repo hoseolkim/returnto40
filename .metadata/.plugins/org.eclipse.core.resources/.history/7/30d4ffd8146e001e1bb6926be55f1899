@@ -1,0 +1,79 @@
+package kr.or.ddit.buyer.controller;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.or.ddit.buyer.service.BuyerService;
+import kr.or.ddit.common.enumpkg.ServiceResult;
+import kr.or.ddit.prod.dao.OthersDAO;
+import kr.or.ddit.validate.grouphint.UpdateGroup;
+import kr.or.ddit.vo.BuyerVO;
+import kr.or.ddit.vo.LprodVO;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Controller
+@RequestMapping("/buyer/{buyerId}")
+public class BuyerModifyController {
+	
+	@Inject
+	private OthersDAO others;
+	
+	@Inject
+	private BuyerService service;
+	
+	
+	@ModelAttribute("lprodList")
+	public List<LprodVO> lprodList(){
+		return others.selectLprodList();
+	}
+	
+	@GetMapping("form")
+	public String buyerUpdateForm(
+		@PathVariable String buyerId
+		, Model model
+	) {
+		BuyerVO buyer = null; 
+		try {
+			buyer = service.retrieveBuyer(buyerId);
+		}catch (Exception e) {
+			return "redirect:/buyer";
+		}
+		model.addAttribute("buyer", buyer);
+		return "buyer/buyerEdit";
+	}
+	
+	@PutMapping()
+	public String buyerUpdate(
+		@ModelAttribute("buyer") @Validated(UpdateGroup.class) BuyerVO buyer
+		, Errors errors
+		, Model model
+	) {
+		
+		log.info("===================================");
+		if(!errors.hasErrors()) {
+			ServiceResult result = service.modifyBuyer(buyer);
+			if(result == ServiceResult.OK) {
+				return "redirect:/buyer/{buyerID}";
+			}else {
+				model.addAttribute("message", "서버 오류! 잠시후 다시 시도해주세요!");
+				return "buyer/buyerEdit";
+			}
+			
+		}else {
+			return "buyer/buyerEdit";
+		}
+	}
+	
+}

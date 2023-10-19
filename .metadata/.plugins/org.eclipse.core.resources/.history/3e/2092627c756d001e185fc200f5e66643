@@ -1,0 +1,23 @@
+package kr.or.ddit.buyer;
+
+import org.apache.tiles.AttributeContext;
+import org.apache.tiles.preparer.ViewPreparer;
+import org.apache.tiles.request.Request;
+
+import kr.or.ddit.common.streotype.Preparer;
+import kr.or.ddit.vo.MenuVO;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Preparer
+public class BuyerViewPreparer implements ViewPreparer {
+
+	@Override
+	public void execute(Request tilesContext, AttributeContext attributeContext) {
+		log.info("★★★★★★★★★★★★★★★★★★★★★★view preparer★★★★★★★★★★★★★★★");
+//		<a href='contextPath/buyer/form'>제조사등록</a>
+		MenuVO menu1 = new MenuVO();
+		menu1.setMenuText("제조사등록");
+		menu1.setMenuUrl("/buyer/form");
+	}
+}

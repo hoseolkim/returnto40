@@ -1,0 +1,5 @@
+package com.springboard.board.vo;
+
+public class FreeBoardVO {
+
+}

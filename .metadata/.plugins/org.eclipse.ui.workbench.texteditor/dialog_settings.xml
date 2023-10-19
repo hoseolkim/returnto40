@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value=""/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="true"/>
+		<item key="wholeword" value="true"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="true"/>
+		<list key="findhistory">
+			<item value=":v\d+"/>
+			<item value="AND"/>
+			<item value="required=&quot;true&quot;"/>
+			<item value="(\w+_\w+),"/>
+			<item value=" \w+_\w+,"/>
+			<item value="\w+_\w+,"/>
+			<item value="BUYER_ID BUYER_ID,"/>
+			<item value="file"/>
+			<item value="&lt;servlet-name&gt;default&lt;/servlet-name&gt;"/>
+			<item value="&lt;sapn"/>
+			<item value="&lt;sapn&gt;"/>
+			<item value="&lt;span class=&quot;error&quot;&gt;\$\{errors\.(\w+)\}&lt;/span&gt;"/>
+			<item value="&lt;span\R\t\t\t\t\tclass=&quot;error&quot;&gt;\$\{errors\.(\w+)\}&lt;/span&gt;"/>
+			<item value="&lt;span\R\t\t\t\tclass=&quot;error&quot;&gt;\$\{errors\.(\w+)\}&lt;/span&gt;"/>
+			<item value="&lt;span\R\t\t\t\tclass=&quot;error&quot;&gt;"/>
+		</list>
+		<list key="replacehistory">
+			<item value=""/>
+			<item value=","/>
+			<item value=", \1"/>
+			<item value=",\1"/>
+			<item value="&lt;form:errors path=&quot;\1&quot; element=&quot;span&quot; cssClass=&quot;error&quot; /&gt;"/>
+			<item value="&lt;span class=&quot;error&quot;&gt;\$\{errors\.$1\}&lt;/span&gt;"/>
+			<item value="&lt;span class=&quot;error&quot;&gt;\$\{errors\.\1\}&lt;/span&gt;"/>
+			<item value="required=&quot;true&quot;"/>
+			<item value=",$1"/>
+			<item value="LITAG_END"/>
+			<item value="cartSet"/>
+			<item value="memberSet"/>
+			<item value="memberList"/>
+			<item value=", MEM_$1"/>
+			<item value="#\{\}"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="214"/>
+		<item key="DIALOG_Y_ORIGIN" value="-668"/>
+		<item key="DIALOG_WIDTH" value="753"/>
+		<item key="DIALOG_HEIGHT" value="716"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="358"/>
+		<item key="DIALOG_Y_ORIGIN" value="694"/>
+	</section>
+	<section name="org.eclipse.wst.xml.ui.internal.preferences.XMLTemplatePreferencePage$XMLEditTemplateDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="39"/>
+		<item key="DIALOG_Y_ORIGIN" value="59"/>
+		<item key="DIALOG_WIDTH" value="610"/>
+		<item key="DIALOG_HEIGHT" value="329"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+</section>

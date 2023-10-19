@@ -1,0 +1,23 @@
+package kr.or.ddit.jdbc;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import kr.or.ddit.jdbc.dao.BuyerDAO;
+import kr.or.ddit.jdbc.vo.BuyerVO;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class BuyerServiceImpl {
+	
+	private final BuyerDAO dao;
+	
+	
+	public List<BuyerVO> retrieveBuyerList(){
+		
+	}
+	
+}

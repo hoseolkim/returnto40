@@ -1,0 +1,14 @@
+package kr.or.ddit.buyer.dao;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import kr.or.ddit.vo.BuyerVO;
+
+@Mapper
+public interface BuyerDAO {
+	/**
+	 * @param buyerId
+	 * @return
+	 */
+	public BuyerVO selectBuyer(String buyerId);
+}

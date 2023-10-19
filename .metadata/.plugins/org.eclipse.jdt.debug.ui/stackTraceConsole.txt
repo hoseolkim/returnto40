@@ -1,0 +1,24 @@
+org.apache.ibatis.exceptions.PersistenceException: 
+### Error updating database.  Cause: org.apache.ibatis.executor.ExecutorException: Executor was closed.
+### The error may exist in kr/or/ddit/mybatis/mapper/Memo.xml
+### The error may involve kr.or.ddit.memo.dao.MemoDAO.insertMemo
+### The error occurred while executing an update
+### Cause: org.apache.ibatis.executor.ExecutorException: Executor was closed.
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:30)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:199)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:142)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+	at com.sun.proxy.$Proxy9.insertMemo(Unknown Source)
+	at kr.or.ddit.memo.dao.MemoDAOImpl.insertMemo(MemoDAOImpl.java:34)
+	at kr.or.ddit.memo.dao.MemoDAOImplTest.testInsertMemo(MemoDAOImplTest.java:24)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+Caused by: org.apache.ibatis.executor.ExecutorException: Executor was closed.
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:114)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	... 10 more
+

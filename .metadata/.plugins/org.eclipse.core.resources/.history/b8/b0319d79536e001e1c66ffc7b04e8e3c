@@ -1,0 +1,14 @@
+package com.springboard.spring;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class RootContainerLoadTest {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

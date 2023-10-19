@@ -1,0 +1,34 @@
+package kr.or.ddit.prod.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ProdServiceImplTest {
+
+	@Test
+	void testRetrieveProd() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testRetrieveProdList() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testCreateProd() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testModifyProd() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testProdServiceImpl() {
+		fail("Not yet implemented");
+	}
+
+}

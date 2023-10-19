@@ -1,0 +1,16 @@
+package com.springboard.board.vo;
+
+import lombok.Data;
+
+@Data
+public class FreeBoardVO {
+	private Integer boNo;
+	private String boTitle;
+	private String boWriter;
+	private String boIp;
+	private String boMail;
+	private String boPass;
+	private String boContent;
+	private String boDate;
+	private Integer boHit;
+}

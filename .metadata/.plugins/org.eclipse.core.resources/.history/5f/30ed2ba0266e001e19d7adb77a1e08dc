@@ -1,0 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<form action="<c:url value='/buyer/listData'/>" id="searchForm" class="border">
+	<h4>전송 UI</h4>
+	<input type="text" name="buyerLgu" readonly="readonly" placeholder="buyerLgu"/>
+	<input type="text" name="buyerAdd1" readonly="readonly" placeholder="buyerAdd1"/>
+	<input type="text" name="buyerName" readonly="readonly" placeholder="buyerName"/>
+	<input type="text" id="currpage" name="page" readonly="readonly" placeholder="page"/>
+</form>

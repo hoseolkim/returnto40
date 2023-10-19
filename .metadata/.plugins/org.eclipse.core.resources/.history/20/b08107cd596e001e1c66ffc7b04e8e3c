@@ -1,0 +1,6 @@
+package com.springboard.board.dao;
+
+
+public interface BoardDAO {
+
+}

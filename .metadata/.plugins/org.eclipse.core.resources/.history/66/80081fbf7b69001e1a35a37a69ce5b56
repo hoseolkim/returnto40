@@ -1,0 +1,44 @@
+package kr.or.ddit.jdbc;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.junit.jupiter.api.Test;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
+import kr.or.ddit.jdbc.vo.BuyerVO;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@SpringJUnitConfig(locations = "file:src/main/resources/kr/or/ddit/jdbc/conf/*-context.xml")
+class MybatisContextTest {
+
+	@Inject
+	private SqlSessionFactory sqlSessionFactory;
+	
+	@Inject
+	private SqlSessionTemplate session;
+	
+	@Test
+	void test() {
+		log.info("주인된 객체 : {}", sqlSessionFactory);
+	}
+	
+	@Test
+	void test2() {
+		try(
+			SqlSession session = sqlSessionFactory.openSession();
+		){
+			List<BuyerVO> buyerList = session.selectList("testnamespace.selectBuyerList");
+			log.info("buyer list : {}" , buyerList);
+		}
+	}
+
+}

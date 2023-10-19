@@ -1,0 +1,22 @@
+package kr.or.ddit.jdbc.dao;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import kr.or.ddit.jdbc.vo.BuyerVO;
+
+public class BuyerDAOImpl implements BuyerDAO {
+	
+	@Inject
+	private SqlSessionFactory sqlSessionFactory;
+	
+	@Override
+	public List<BuyerVO> selectBuyerList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

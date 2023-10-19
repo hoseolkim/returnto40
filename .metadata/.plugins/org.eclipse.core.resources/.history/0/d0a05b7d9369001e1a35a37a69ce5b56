@@ -1,0 +1,34 @@
+package kr.or.ddit.prod.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ProdDAOTest {
+
+	@Test
+	void testSelectProd() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSelectTotalRecord() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSelectProdList() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testInsertProd() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateProd() {
+		fail("Not yet implemented");
+	}
+
+}

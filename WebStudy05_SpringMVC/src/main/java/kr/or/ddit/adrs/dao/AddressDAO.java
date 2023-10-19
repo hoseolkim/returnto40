@@ -2,6 +2,7 @@ package kr.or.ddit.adrs.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import kr.or.ddit.vo.AddressVO;
@@ -10,6 +11,7 @@ import kr.or.ddit.vo.AddressVO;
  * 주소록 관리(CRUD) persistence layer
  *
  */
+@Mapper
 public interface AddressDAO {
 	/**
 	 * 신규 주소 등록

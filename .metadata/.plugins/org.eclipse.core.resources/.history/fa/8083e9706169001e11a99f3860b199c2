@@ -1,0 +1,5 @@
+package kr.or.ddit.resource;
+
+public class ResourceLoaderDesc {
+
+}

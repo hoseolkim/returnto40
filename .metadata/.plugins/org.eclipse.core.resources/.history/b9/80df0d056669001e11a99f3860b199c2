@@ -1,0 +1,10 @@
+package kr.or.ddit.resource;
+
+public class DBInfo {
+	private String url;
+	private String password;
+	
+	private int maxTotal;
+	private long maxWait;
+	
+}

@@ -1,0 +1,21 @@
+package com.springboard.board.vo;
+
+import java.time.LocalDateTime;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+@Data
+@EqualsAndHashCode(of = "boNo")
+public class FreeBoardVO {
+	private Integer boNo;
+	private String boTitle;
+	private String boWriter;
+	private String boIp;
+	private String boMail;
+	private String boPass;
+	
+	private String boContent;
+	private LocalDateTime boDate;
+	private Integer boHit;
+}

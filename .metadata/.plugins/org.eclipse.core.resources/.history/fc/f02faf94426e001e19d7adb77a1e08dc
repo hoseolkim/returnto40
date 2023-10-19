@@ -1,0 +1,5 @@
+package egovframework.example.dummy.service;
+
+public class DummyService {
+
+}

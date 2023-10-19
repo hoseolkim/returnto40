@@ -1,0 +1,8 @@
+package com.springboard.board.service;
+
+import com.springboard.board.vo.FreeBoardVO;
+
+public interface BoardService {
+	public void createBoard(FreeBoardVO board);
+	public FreeBoardVO retrieveBoard(int boNo);
+}

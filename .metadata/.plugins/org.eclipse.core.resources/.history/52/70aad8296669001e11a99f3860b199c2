@@ -1,0 +1,16 @@
+package kr.or.ddit.resource;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+public class DBInfo {
+	
+	private String url;
+	private String password;
+	
+	private int maxTotal;
+	private long maxWait;
+	
+}

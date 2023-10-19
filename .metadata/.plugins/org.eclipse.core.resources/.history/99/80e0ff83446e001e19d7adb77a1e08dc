@@ -1,0 +1,21 @@
+package egovframework.example.dummy.controller;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+
+import egovframework.example.dummy.service.DummyService;
+
+@Controller
+public class DummyController {
+	
+	@Inject
+	private DummyService service;
+	
+	public String dummyHandler(
+		Model model
+	) {
+		return "dummy/view";
+	}
+}

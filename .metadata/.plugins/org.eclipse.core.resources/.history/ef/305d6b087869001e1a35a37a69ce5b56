@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	<typeAliases>
+		<package name="kr.or.ddit.vo"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="kr/or/ddit/mybatis/mapper/Member.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/mapper/Address.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/mapper/Prod.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/mapper/Others.xml"/>
+	</mappers>
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+

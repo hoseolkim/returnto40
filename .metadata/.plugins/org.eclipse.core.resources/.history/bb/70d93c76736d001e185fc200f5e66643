@@ -1,0 +1,13 @@
+package kr.or.ddit.buyer;
+
+import org.apache.tiles.AttributeContext;
+import org.apache.tiles.preparer.ViewPreparer;
+import org.apache.tiles.request.Request;
+
+public class BuyerViewPreparer implements ViewPreparer {
+
+	@Override
+	public void execute(Request tilesContext, AttributeContext attributeContext) {
+		
+	}
+}

@@ -1,0 +1,5 @@
+package egovframework.example.dummy.controller;
+
+public class DummyController {
+
+}

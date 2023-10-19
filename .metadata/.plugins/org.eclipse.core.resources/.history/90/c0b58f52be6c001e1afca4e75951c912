@@ -1,0 +1,5 @@
+package kr.or.ddit.interceptors;
+
+public class AuthenticationCheckInterceptor {
+
+}

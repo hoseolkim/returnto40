@@ -1,0 +1,17 @@
+1696925186849	Rename type 'ProdListControllerServlet'
+1696925934248	Rename type 'ProdViewControllerServlet'
+1696926550572	Rename type 'ProdListController_Case2_Servlet'
+1696926633317	Rename type 'ProdListDataControllerServlet'
+1696926978011	Change method 'getUI'
+1696984693799	Rename type 'IndexControllerServlet'
+1696988239855	Delete element
+1696988480340	Delete element
+1696994106975	Rename type 'ProdInsertControllerServlet'
+1696994770591	Rename type 'ProdUpdateControllerServlet'
+1697004023389	Rename local variable 'param'
+1697004472670	Rename local variable 'prodVO'
+1697004745590	Rename local variable 'prodVO'
+1697088110900	Copy files
+1697156341250	Copy file
+1697166339535	Copy compilation unit
+1697167096694	Copy folder

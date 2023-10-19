@@ -1,0 +1,76 @@
+package kr.or.ddit.prod.controller;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import kr.or.ddit.paging.BootstrapPaginationRenderer;
+import kr.or.ddit.prod.dao.OthersDAO;
+import kr.or.ddit.prod.service.ProdService;
+import kr.or.ddit.vo.PaginationInfo;
+import kr.or.ddit.vo.ProdVO;
+
+@Controller
+public class ProdListController{
+	@Inject
+	private ProdService service;
+	@Inject
+	private OthersDAO othersDAO;
+	
+	private void addAttribute(Model model){
+		model.addAttribute("lprodList", othersDAO.selectLprodList());
+		model.addAttribute("buyerList", othersDAO.selectBuyerList(null));
+	}
+	
+	@RequestMapping(value="/prod/prodList.do", method = RequestMethod.GET)
+	public String prodList(
+			@ModelAttribute("detailCondition") ProdVO detailCondition
+			, @RequestParam(value="page", required = false, defaultValue = "1") int currentPage
+			, Model model){
+		addAttribute(model);
+		
+		listData(detailCondition, currentPage, model);
+		
+		return "prod/prodList";
+	}
+	
+	@RequestMapping("/prod/ajax/prodListUI.do")
+	public String uiController(Model model){
+		addAttribute(model);
+		
+		return "prod/prodListUI";
+		
+	}
+	
+	@RequestMapping("/prod/ajax/prodListData.do")
+	public String listData(
+		@ModelAttribute("detailCondition") ProdVO detailCondition
+		, @RequestParam(value = "page", required = false, defaultValue = "1") int currentPage
+		, Model model
+	){
+		PaginationInfo<ProdVO> paging = new PaginationInfo<>(3,2);
+		paging.setCurrentPage(currentPage);
+		paging.setDetailCondition(detailCondition);
+		
+		service.retrieveProdList(paging);
+		
+		paging.setRenderer(new BootstrapPaginationRenderer());
+		
+		req.setAttribute("paging", paging);
+		
+		
+		return "jsonView";
+		
+	}
+}
+
+
+
+
+

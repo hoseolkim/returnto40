@@ -4,13 +4,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.junit.jupiter.api.Test;
+import org.springframework.stereotype.Service;
 
 import kr.or.ddit.vo.AddressVO;
 
+@Service
 class AddressDAOImplTest {
 
-	AddressDAO dao = new AddressDAOImpl();
+	@Inject
+	private AddressDAO dao;
 	
 	@Test
 	void testInsertAddress() {
