@@ -41,7 +41,6 @@
     <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
     <fullyQualifiedTypeName name="com.springboard.board.dao.BoardDAO"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
     <fullyQualifiedTypeName name="org.springframework.core.io.Resource"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Param"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="com.springboard.board.vo.FreeBoardVO"/>
     <fullyQualifiedTypeName name="lombok.extern.slf4j.Slf4j"/>
     <fullyQualifiedTypeName name="com.springboard.paging.vo.SearchVO"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
 </qualifiedTypeNameHistroy>

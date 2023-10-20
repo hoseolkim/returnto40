@@ -14,8 +14,7 @@ import com.springboard.board.service.BoardService;
 import com.springboard.board.vo.FreeBoardVO;
 import com.springboard.paging.BootstrapPaginationRenderer;
 import com.springboard.paging.vo.PaginationInfo;
-
-import kr.or.ddit.vo.SearchVO;
+import com.springboard.paging.vo.SearchVO;
 
 /**
  * C : /board/boardInsert.do
@@ -37,6 +36,12 @@ public class BoardRetrieveController {
 	private BoardService service;
 	
 	@GetMapping
+	public String retrieveBoardListUI() {
+		return "board/boardList";
+	}
+	
+	
+	@GetMapping("data")
 	public String retrieveBoardList(
 		@RequestParam(value="searchType", required = false) String searchType
 		, @RequestParam(value="searchWord", required = false) String searchWord
@@ -47,7 +52,7 @@ public class BoardRetrieveController {
 		PaginationInfo<FreeBoardVO> paging = new PaginationInfo<FreeBoardVO>(3, currentPage);
 		paging.setRenderer(new BootstrapPaginationRenderer());
 		model.addAttribute("paging", paging);
-		return "board/boardList";
+		return "jsonView";
 	}
 	
 	@GetMapping("{boNo}")
