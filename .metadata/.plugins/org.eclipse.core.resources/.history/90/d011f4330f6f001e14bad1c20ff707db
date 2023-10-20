@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboard.board.dao.BoardDAO">
+	<insert id="insertBoard" parameterType="FreeBoardVO">
+		<selectKey order="BEFORE" keyProperty="boNo" resultType="int">
+			SELECT FREEBOARD_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO FREEBOARD (
+		    BO_NO
+		    , BO_TITLE
+		    , BO_WRITER
+		    , BO_IP
+		    , BO_MAIL
+		    , BO_PASS
+		    , BO_CONTENT
+		) VALUES (
+			#{boNo, jdbcType=NUMERIC}
+			, #{boTitle, jdbcType=VARCHAR}
+			, #{boWriter, jdbcType=VARCHAR}
+			, #{boIp, jdbcType=VARCHAR}
+			, #{boMail, jdbcType=VARCHAR}
+			, #{boPass, jdbcType=VARCHAR}
+			, #{boContent, jdbcType=CLOB}
+		)
+	</insert>
+	
+	<select id="selectBoard" parameterType="int" resultType="FreeBoardVO">
+		SELECT
+		    BO_NO
+		    , BO_TITLE
+		    , BO_WRITER
+		    , BO_IP
+		    , BO_MAIL
+		    , BO_PASS
+		    , BO_CONTENT
+		    , BO_DATE
+		    , BO_HIT
+		FROM
+		    FREEBOARD
+		WHERE
+			BO_NO = #{boNo}
+	</select>
+	
+	
+</mapper>

@@ -1,0 +1,51 @@
+package com.springboard.board.controller;
+
+import java.io.IOException;
+import java.nio.charset.Charset;
+
+import javax.inject.Inject;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.springboard.board.service.BoardService;
+import com.springboard.board.vo.AttatchVO;
+
+@Controller
+public class BoardFileDownloadController {
+	
+	@Inject
+	private BoardService service;
+	
+	@Value("#{appInfo.boFiles}")
+	private Resource boFiles;
+	
+	@GetMapping("/board/{boNo}/boFile/{attNo }")
+	public ResponseEntity<Resource> download(
+		@PathVariable int attNo
+	) throws IOException {
+		
+		AttatchVO attatch = service.retrieveAttatch(attNo);
+		
+		Resource bofile =boFiles.createRelative(attatch.getAttSavename());
+		
+		ContentDisposition disposition = ContentDisposition.attachment()
+				.filename(attatch.getAttFilename(), Charset.defaultCharset())
+				.build();
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentDisposition(disposition);
+		headers.setContentLength(bofile.contentLength());
+		
+		return ResponseEntity.ok()
+				.headers(headers)
+				.body(bofile);
+	}
+	
+	
+}

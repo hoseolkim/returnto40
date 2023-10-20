@@ -167,7 +167,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="D:\00.tools\eGovFrameDev-4.0.0-64bit\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="D:\00.tools\eGovFrameDev-4.0.0-64bit\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\WebStudy06_SpringBoard" path="/WebStudy06_SpringBoard" reloadable="true" source="org.eclipse.jst.jee.server:WebStudy06_SpringBoard"/></Host>
+      <Context docBase="D:\00.tools\eGovFrameDev-4.0.0-64bit\works\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="D:\00.tools\eGovFrameDev-4.0.0-64bit\works\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\WebStudy06_SpringBoard" path="/WebStudy06_SpringBoard" reloadable="true" source="org.eclipse.jst.jee.server:WebStudy06_SpringBoard"/></Host>
     </Engine>
   </Service>
 </Server>

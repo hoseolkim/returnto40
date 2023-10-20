@@ -12,3 +12,23 @@
 1697706771775	Delete element
 1697706780442	Delete element
 1697707017403	Delete element
+1697770933108	Delete element
+1697773132946	Rename local variable 'filename'
+1697780842021	Move 'AttatchDAO.xml' to 'mapper'
+1697781212578	Rename field 'dao'
+1697786040165	Change method 'increamentBoard'
+1697786114326	Change method 'incramentDowncount'
+1697787250861	Rename local variable 'attatch'
+1697787559181	Rename local variable 'attatch'
+1697787608222	Rename local variable 'bofile'
+1697789777492	Copy compilation unit
+1697789778527	Copy compilation unit
+1697789781321	Delete elements
+1697789891460	Copy compilation unit
+1697789892767	Copy compilation unit
+1697789895029	Delete element
+1697789896138	Delete element
+1697789921155	Copy compilation unit
+1697789923208	Delete element
+1697789927663	Copy compilation unit
+1697789929079	Delete element

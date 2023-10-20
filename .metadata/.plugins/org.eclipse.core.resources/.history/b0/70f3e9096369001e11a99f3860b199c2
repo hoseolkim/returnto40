@@ -1,9 +1,0 @@
-package kr.or.ddit.resource;
-
-import org.springframework.core.io.Resource;
-
-public class ResourceVO {
-	private Resource res1;
-	private Resource res2;
-	private Resource res3;
-}

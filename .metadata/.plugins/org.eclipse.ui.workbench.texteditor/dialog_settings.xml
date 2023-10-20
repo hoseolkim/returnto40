@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value=", bo_date"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="true"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="true"/>
 		<list key="findhistory">
+			<item value="(\w+_\w+),"/>
+			<item value="()"/>
+			<item value="required=&quot;true&quot;"/>
+			<item value="freeboard"/>
+			<item value=":v\d"/>
 			<item value=":v\d+"/>
 			<item value="AND"/>
-			<item value="required=&quot;true&quot;"/>
-			<item value="(\w+_\w+),"/>
 			<item value=" \w+_\w+,"/>
 			<item value="\w+_\w+,"/>
 			<item value="BUYER_ID BUYER_ID,"/>
@@ -20,15 +23,13 @@
 			<item value="&lt;sapn"/>
 			<item value="&lt;sapn&gt;"/>
 			<item value="&lt;span class=&quot;error&quot;&gt;\$\{errors\.(\w+)\}&lt;/span&gt;"/>
-			<item value="&lt;span\R\t\t\t\t\tclass=&quot;error&quot;&gt;\$\{errors\.(\w+)\}&lt;/span&gt;"/>
-			<item value="&lt;span\R\t\t\t\tclass=&quot;error&quot;&gt;\$\{errors\.(\w+)\}&lt;/span&gt;"/>
-			<item value="&lt;span\R\t\t\t\tclass=&quot;error&quot;&gt;"/>
 		</list>
 		<list key="replacehistory">
-			<item value=""/>
-			<item value=","/>
 			<item value=", \1"/>
+			<item value=""/>
+			<item value="board"/>
 			<item value=",\1"/>
+			<item value=","/>
 			<item value="&lt;form:errors path=&quot;\1&quot; element=&quot;span&quot; cssClass=&quot;error&quot; /&gt;"/>
 			<item value="&lt;span class=&quot;error&quot;&gt;\$\{errors\.$1\}&lt;/span&gt;"/>
 			<item value="&lt;span class=&quot;error&quot;&gt;\$\{errors\.\1\}&lt;/span&gt;"/>
@@ -39,7 +40,6 @@
 			<item value="memberSet"/>
 			<item value="memberList"/>
 			<item value=", MEM_$1"/>
-			<item value="#\{\}"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

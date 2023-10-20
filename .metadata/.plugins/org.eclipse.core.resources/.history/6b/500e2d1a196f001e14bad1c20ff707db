@@ -1,0 +1,27 @@
+package com.springboard.board.controller;
+
+import javax.inject.Inject;
+
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.springboard.board.service.BoardService;
+
+@Controller
+public class BoardFileDownloadController {
+	
+	@Inject
+	private BoardService service;
+	
+	@GetMapping("/board/{boNo}/boFile/{attNo }")
+	public ResponseEntity<Resource> download(
+		@PathVariable int attNo
+	) {
+		
+	}
+	
+	
+}

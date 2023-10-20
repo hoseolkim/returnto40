@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboard.board.dao.BoardDAO">
+
+
+	<resultMap type="FreeBoardVO" id="board" autoMapping="true">
+		<id column="ABO_NO" property="boNo"/>
+		<collection property="attatchList" ofType="AttatchVO" autoMapping="true" />
+	</resultMap>
+	
+	
+	<select id="selectBoard" parameterType="int" resultMap="board">
+		<bind name="" value=""/>
+		SELECT
+		    FREEBOARD.BO_NO ABO_NO
+		    , BO_TITLE
+		    , BO_WRITER
+		    , BO_IP
+		    , BO_MAIL
+		    , BO_PASS
+		    , BO_CONTENT
+		    , BO_DATE
+		    , BO_HIT
+		    , ATTATCH.BO_NO
+		    , ATT_NO
+		    , ATT_FILENAME
+		    , ATT_SAVENAME
+		    , ATT_MIME
+		    , ATT_FILESIZE
+		    , ATT_FANCYSIZE
+		    , ATT_DOWNLOAD
+		FROM
+		    FREEBOARD LEFT OUTER JOIN ATTATCH ON (FREEBOARD.BO_NO = ATTATCH.BO_NO)
+		WHERE
+			FREEBOARD.BO_NO = #{boNo}
+	</select>
+	
+	<insert id="insertBoard" parameterType="FreeBoardVO">
+		<selectKey order="BEFORE" keyProperty="boNo" resultType="int">
+			SELECT FREEBOARD_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO FREEBOARD (
+		    BO_NO
+		    , BO_TITLE
+		    , BO_WRITER
+		    , BO_IP
+		    , BO_MAIL
+		    , BO_PASS
+		    , BO_CONTENT
+		) VALUES (
+			#{boNo, jdbcType=NUMERIC}
+			, #{boTitle, jdbcType=VARCHAR}
+			, #{boWriter, jdbcType=VARCHAR}
+			, #{boIp, jdbcType=VARCHAR}
+			, #{boMail, jdbcType=VARCHAR}
+			, #{boPass, jdbcType=VARCHAR}
+			, #{boContent, jdbcType=CLOB}
+		)
+	</insert>
+	
+</mapper>

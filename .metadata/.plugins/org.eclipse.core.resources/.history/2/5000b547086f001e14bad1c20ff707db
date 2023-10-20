@@ -1,0 +1,23 @@
+package com.springboard.board.vo;
+
+import java.io.Serializable;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+@Data
+@EqualsAndHashCode(of = "attNo")
+public class AttatchVO implements Serializable{
+	private Integer attNo;
+	private Integer boNo;
+	private String attFilename;
+	private String attSavename;
+	private String attMime;
+	private long attFilesize;	// 1024000000
+	private String attFancysize;	// 1GB
+	private Integer attDownload;
+	
+	
+	
+	
+}

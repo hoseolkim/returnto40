@@ -1,0 +1,17 @@
+package com.springboard.board.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class BoardFileDownloadController {
+	
+	@GetMapping("/board/{boNo}/boFile/{atch.attNo }")
+	public download(
+		
+	) {
+		
+	}
+	
+	
+}

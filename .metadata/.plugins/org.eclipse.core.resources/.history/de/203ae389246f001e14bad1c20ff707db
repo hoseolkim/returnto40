@@ -1,0 +1,31 @@
+package com.springboard.board.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
+
+@SpringJUnitWebConfig(locations = "file:src/main/resources/com/springboard/spring/conf/*-context.xml")
+class BoardServiceImplTest {
+
+	@Test
+	void testCreateBoard() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testRetrieveBoard() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testRetrieveAttatch() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testRetrieveBoardList() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,19 @@
+package com.springboard.board.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class BoardDAOTest {
+
+	@Test
+	void testInsertBoard() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSelectBoard() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,35 @@
+package com.springboard.board.vo;
+
+import java.io.Serializable;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+@Data
+@EqualsAndHashCode(of = "attNo")
+public class AttatchVO implements Serializable{
+	
+	private MultipartFile boFile;
+	
+	public AttatchVO(MultipartFile boFile) {
+		this.boFile = boFile;
+		this.attFilename = boFile.getOriginalFilename();
+		this.attMime = boFile.getContentType();
+		this.attFilesize = boFile.getSize();
+	}
+	
+	private Integer attNo;
+	private Integer boNo;
+	private String attFilename;
+	private String attSavename;
+	private String attMime;
+	private long attFilesize;	// 1024000000
+	private String attFancysize;	// 1GB
+	private Integer attDownload;
+	
+	
+	
+	
+}

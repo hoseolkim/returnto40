@@ -1,0 +1,21 @@
+package com.springboard.board.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
+
+@SpringJUnitWebConfig(locations = "classpath:com/springboard/spring/conf/*-context.xml")
+class BoardDAOTest {
+
+	@Test
+	void testInsertBoard() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSelectBoard() {
+		fail("Not yet implemented");
+	}
+
+}
