@@ -40,62 +40,66 @@
 	</tfoot>
 </table>
 <form action="<c:url value='/board/data'/>" id="searchForm">
-	<input type="hidden" name="searchType" readonly/>
-	<input type="hidden" name="searchWord" readonly/>
-	<input type="hidden" id="currpage" name="page" readonly="readonly" placeholder="page"/>
+	<input type="text" name="searchType" readonly/>
+	<input type="text" name="searchWord" readonly/>
+	<input type="text" id="currpage" name="page" readonly="readonly" placeholder="page"/>
 </form>
 <script>
 
-function fn_paging(page){
-	searchForm.page.value = page;
-	searchForm.requestSubmit();
-	searchForm.page.value = "";
-}
-
-var makeTrtags = (board)=>{
-	let trCode =`
-	<tr>
-		<td>\${board.boNo}</td>
-		<td>\${board.boTitle} [\${board.fileCnt}]</td>
-		<td>\${board.boWriter}</td>
-		<td>\${board.boDate}</td>
-		<td>\${board.boHit}</td>
-	</tr>
-	`;
-	return trCode;
-}
-
-$(searchForm).on("submit",function(event){
-	event.preventDefault();
-	let url = this.action;
-	let data = $(this).serialize();
-	$.getJSON(url,data)
-		.done(function(resp){
-			let paging = resp.paging;
-			let dataList = paging.dataList;
-			let code = "";
-			if(dataList?.length){
-				$.each(dataList,function(i,board){
-					code += makeTrtags(board);
-				})
-			}else{
-				code += "<tr><td colspan='5'>조회된 게시글이 없습니다.</td></tr>"
-			}
-			$(pagingArea).html(paging.pagingHTML);
-			$(listBody).html(code);
-		});
 	
-}).submit();
-
-$(searchUI).on("click", "#searchBtn", function(event){
-	let inputs = $(this).parents("#searchUI").find(":input[name]");
-	$.each(inputs, function(idx, ipt){
-		let name = ipt.name;
-		let value = $(ipt).val();
-		$(searchForm).find(`:input[name=\${name}]`).val(value);
+	
+	var makeTrtags = (board)=>{
+		let cPath = $(document.body).data("contextPath");
+		let boDate = board.boDate;
+		let dateFormat = `\${boDate[0]}-\${boDate[1]}-\${boDate[2]}T\${boDate[3]}:\${boDate[4]}:\${boDate[5]}`;
+		let trCode =`
+		<tr>
+			<td>\${board.boNo}</td>
+			<td><a href="\${cPath}/board/\${board.boNo}">\${board.boTitle} [\${board.fileCnt}]</a></td>
+			<td>\${board.boWriter}</td>
+			<td>\${dateFormat}</td>
+			<td>\${board.boHit}</td>
+		</tr>
+		`;
+		return trCode;
+	}
+	
+	$(searchForm).on("submit",function(event){
+		event.preventDefault();
+		let url = this.action;
+		let data = $(this).serialize();
+		$.getJSON(url,data)
+			.done(function(resp){
+				let paging = resp.paging;
+				let dataList = paging.dataList;
+				let code = "";
+				if(dataList?.length){
+					$.each(dataList,function(i,board){
+						code += makeTrtags(board);
+					})
+				}else{
+					code += "<tr><td colspan='5'>조회된 게시글이 없습니다.</td></tr>"
+				}
+				$(pagingArea).html(paging.pagingHTML);
+				$(listBody).html(code);
+			});
+		
+	}).submit();
+	
+	function fn_paging(page){
+		searchForm.page.value = page;
+		searchForm.requestSubmit();
+		searchForm.page.value = "";
+	}
+	$(searchUI).on("click", "#searchBtn", function(event){
+		let inputs = $(this).parents("#searchUI").find(":input[name]");
+		$.each(inputs, function(idx, ipt){
+			let name = ipt.name;
+			let value = $(ipt).val();
+			$(searchForm).find(`:input[name=\${name}]`).val(value);
+		});
 		$(searchForm).submit();
 	});
-});
 </script>
 
 

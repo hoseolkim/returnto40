@@ -49,8 +49,12 @@ public class BoardRetrieveController {
 		, Model model
 		, @ModelAttribute("simpleCondition") SearchVO simpleCondition
 	) {
-		PaginationInfo<FreeBoardVO> paging = new PaginationInfo<FreeBoardVO>(3, currentPage);
+		PaginationInfo<FreeBoardVO> paging = new PaginationInfo<FreeBoardVO>(5, 3);
+		paging.setSimpleCondition(simpleCondition);
+		paging.setCurrentPage(currentPage);
 		paging.setRenderer(new BootstrapPaginationRenderer());
+		service.retrieveBoardList(paging);
+		
 		model.addAttribute("paging", paging);
 		return "jsonView";
 	}
@@ -61,6 +65,7 @@ public class BoardRetrieveController {
 		, Model model
 	) {
 		FreeBoardVO board = service.retrieveBoard(boNo);
+		service.incrementBoardHit(board);
 		model.addAttribute("board", board);
 		return "board/boardView";
 	}

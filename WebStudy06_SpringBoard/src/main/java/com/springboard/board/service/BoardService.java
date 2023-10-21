@@ -18,4 +18,6 @@ public interface BoardService {
 	public AttatchVO retrieveAttatch(int attNo);
 	
 	public void retrieveBoardList(PaginationInfo<FreeBoardVO> paging);
+	
+	public void incrementBoardHit(FreeBoardVO board);
 }

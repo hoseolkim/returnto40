@@ -10,6 +10,6 @@
     <booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="false"/>
     <stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_361"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="start"/>
-    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dcatalina.base=&quot;D:\00.tools\eGovFrameDev-4.0.0-64bit\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0&quot; -Dcatalina.home=&quot;D:\apache-tomcat-8.5.90&quot; -Dwtp.deploy=&quot;D:\00.tools\eGovFrameDev-4.0.0-64bit\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps&quot; -Djava.endorsed.dirs=&quot;D:\apache-tomcat-8.5.90\endorsed&quot;&#13;&#10;-Xms2048m&#13;&#10;-Xmx2048m&#13;&#10;-XX:MaxPermSize=512m"/>
+    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dcatalina.base=&quot;D:\00.tools\eGovFrameDev-4.0.0-64bit\works\.metadata\.plugins\org.eclipse.wst.server.core\tmp0&quot; -Dcatalina.home=&quot;D:\apache-tomcat-8.5.90&quot; -Dwtp.deploy=&quot;D:\00.tools\eGovFrameDev-4.0.0-64bit\works\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps&quot; -Djava.endorsed.dirs=&quot;D:\apache-tomcat-8.5.90\endorsed&quot;&#13;&#10;-Xms2048m&#13;&#10;-Xmx2048m&#13;&#10;-XX:MaxPermSize=512m"/>
     <stringAttribute key="server-id" value="Tomcat v8.5 Server at localhost"/>
 </launchConfiguration>

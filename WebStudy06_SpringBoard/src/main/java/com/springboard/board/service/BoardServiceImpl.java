@@ -56,8 +56,6 @@ public class BoardServiceImpl implements BoardService {
 		if(board==null) {
 			throw new BoardNotFoundException(HttpStatus.NOT_FOUND, String.format("%d 에 해당하는 게시글이 없음", boNo));
 		}
-		boardDAO.incrementBoard(boNo);
-		board.setBoHit(board.getBoHit()+1);
 		return board;
 	}
 
@@ -78,6 +76,13 @@ public class BoardServiceImpl implements BoardService {
 		List<FreeBoardVO> dataList = boardDAO.selectBoardList(paging);
 		paging.setDataList(dataList);
 	}
+
+	@Override
+	public void incrementBoardHit(FreeBoardVO board) {
+		boardDAO.incrementBoard(board.getBoNo());
+		board.setBoHit(board.getBoHit()+1);
+	}
+
 	
 	
 	

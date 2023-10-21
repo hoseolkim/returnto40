@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<table>
+<table class="table table-bordered">
 
 	<tr>
 		<th>글번호</th>
@@ -22,10 +22,6 @@
 	<tr>
 		<th>이메일</th>
 		<td>${board.boMail}</td>
-	</tr>
-	<tr>
-		<th>비번</th>
-		<td>${board.boPass}</td>
 	</tr>
 	<tr>
 		<th>첨부파일 목록</th>
@@ -49,5 +45,11 @@
 	<tr>
 		<th>조회수</th>
 		<td>${board.boHit}</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<c:url value="/board/${boNo }/edit" var="boardUpdateUrl" />
+			<a class="btn btn-primary" href="${boardUpdateUrl }">게시글 수정</a>
+		</td>
 	</tr>
 </table>

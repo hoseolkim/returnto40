@@ -5,7 +5,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <script src="<c:url value='/resources/js/ckeditor/ckeditor.js'/>"></script>
 <form:form modelAttribute="newBoard" enctype="multipart/form-data" >
-	<table>
+	<table class="table table-bordered">
 		<tr>
 			<th><label for="boTitle">제목</label></th>
 			<td><form:input type="text" path="boTitle" class="form-control"
