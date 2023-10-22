@@ -83,6 +83,27 @@ public class BoardServiceImpl implements BoardService {
 		board.setBoHit(board.getBoHit()+1);
 	}
 
+	@Override
+	public void modifyBoard(FreeBoardVO board) {
+		FreeBoardVO target = boardDAO.checkBoard(board);
+		if(target == null) {
+			throw new BoardNotFoundException(HttpStatus.FORBIDDEN);
+		}
+		boardDAO.updateBoard(board);
+		attatchDAO.deleteAttatch(board.getBoNo());
+		processBoFiles(board);
+	}
+
+	@Override
+	public void deleteBoard(FreeBoardVO board) {
+		FreeBoardVO target = boardDAO.checkBoard(board);
+		if(target == null) {
+			throw new BoardNotFoundException(HttpStatus.FORBIDDEN);
+		}
+		attatchDAO.deleteAttatch(board.getBoNo());
+		boardDAO.deleteBoard(board.getBoNo());
+	}
+
 	
 	
 	

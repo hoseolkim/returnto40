@@ -50,6 +50,48 @@
 		<td colspan="2">
 			<c:url value="/board/${boNo }/edit" var="boardUpdateUrl" />
 			<a class="btn btn-primary" href="${boardUpdateUrl }">게시글 수정</a>
+			<a data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-danger">삭제</a>
 		</td>
 	</tr>
 </table>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deleteModalLabel">비밀번호 확인</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action='<c:url value="/board/${boNo }" />' id="deleteForm" method="post">
+	      <div class="modal-body">
+	      	<input type="hidden" name="_method" value="delete"/> 
+	      	<input type="hidden" name="boNo" value="${boNo }"/>
+	        <input type="password" name="boPass" class="form-control" />
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+	        <button type="submit" class="btn btn-primary">삭제</button>
+	      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+	
+<script>
+	$(deleteModal).on("hidden.bs.modal", function(){
+		$(this).find("form")[0].boPass.value = "";
+	});
+	
+	$(deleteForm).on('submit',function(){
+		
+	});
+	
+</script>
+
+
+
+
+
+

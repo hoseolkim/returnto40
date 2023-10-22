@@ -36,6 +36,14 @@
 				<form:errors path="boPass" element="span" cssClass="error" /></td>
 		</tr>
 		<tr>
+			<th>첨부파일</th>
+			<td>
+				<input type="file" name="boFile">
+				<input type="file" name="boFile">
+				<input type="file" name="boFile">
+			</td>
+		</tr>
+		<tr>
 			<th><label for="boContent">내용</label></th>
 			<td>
 				<form:textarea path="boContent"/>
@@ -45,6 +53,7 @@
 			<td colspan="2">
 				<input type="submit" value="저장" class="btn btn-primary" />
 				<input type="reset" value="취소" class="btn" />
+				<a href="<c:url value='/board/${boNo }'/>" class="btn btn-success">뒤로 가기</a>
 			</td>
 		</tr>
 	</form:form>

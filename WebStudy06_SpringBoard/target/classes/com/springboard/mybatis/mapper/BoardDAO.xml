@@ -122,5 +122,40 @@
 			, #{boContent, jdbcType=CLOB}
 		)
 	</insert>
-	
+	<select id="checkBoard" parameterType="FreeBoardVO" resultType="FreeBoardVO">
+		SELECT
+			BO_NO
+			, BO_TITLE
+		    , BO_WRITER
+		    , BO_IP
+		    , BO_MAIL
+		    , BO_PASS
+		    , BO_CONTENT
+		    , BO_DATE
+		    , BO_HIT
+		FROM
+			FREEBOARD
+		WHERE
+			BO_NO = #{boNo}
+		AND
+			BO_PASS = #{boPass}
+	</select>
+	<update id="updateBoard" parameterType="FreeBoardVO">
+		UPDATE FREEBOARD
+		SET
+			BO_TITLE = #{boTitle,jdbcType=VARCHAR}
+			, BO_WRITER = #{boWriter,jdbcType=VARCHAR}
+			, BO_IP = #{boIp,jdbcType=VARCHAR}
+			, BO_MAIL = #{boMail,jdbcType=VARCHAR}
+			, BO_CONTENT = #{boContent,jdbcType=CLOB}
+			, BO_DATE = SYSDATE
+		WHERE
+			BO_NO = #{boNo}
+	</update>
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM
+			FREEBOARD
+		WHERE
+			BO_NO = #{boNo}
+	</delete>
 </mapper>

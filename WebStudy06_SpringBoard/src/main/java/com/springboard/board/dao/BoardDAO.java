@@ -17,4 +17,9 @@ public interface BoardDAO {
 	public int selectTotalRecord(PaginationInfo<FreeBoardVO> paging);
 	public List<FreeBoardVO> selectBoardList(PaginationInfo<FreeBoardVO> paging);
 	
+	public int updateBoard(FreeBoardVO board);
+	
+	public FreeBoardVO checkBoard(FreeBoardVO board);
+	
+	public int deleteBoard(@Param("boNo") int boNo);
 }

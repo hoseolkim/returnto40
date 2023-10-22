@@ -20,4 +20,9 @@ public interface BoardService {
 	public void retrieveBoardList(PaginationInfo<FreeBoardVO> paging);
 	
 	public void incrementBoardHit(FreeBoardVO board);
+	
+	
+	public void modifyBoard(FreeBoardVO board);
+	
+	public void deleteBoard(FreeBoardVO board);
 }

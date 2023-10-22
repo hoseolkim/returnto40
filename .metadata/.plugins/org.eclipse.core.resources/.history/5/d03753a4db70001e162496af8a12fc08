@@ -1,0 +1,17 @@
+package com.springboard.board.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/board/{boNo}")
+public class BoardDeleteController {
+	@DeleteMapping
+	public String deleteBoard() {
+		String viewName = numm;
+		
+		
+		return viewName;
+	}
+}

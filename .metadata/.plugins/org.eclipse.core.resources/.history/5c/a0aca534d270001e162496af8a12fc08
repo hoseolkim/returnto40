@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboard.board.dao.BoardDAO">
+
+
+	<resultMap type="FreeBoardVO" id="board" autoMapping="true">
+		<id column="ABO_NO" property="boNo"/>
+		<collection property="attatchList" ofType="AttatchVO" autoMapping="true" />
+	</resultMap>
+	
+	<select id="selectTotalRecord" parameterType="PaginationInfo" resultType="int" >
+		SELECT COUNT(*)
+		FROM FREEBOARD
+		<include refid="searchFrag" />
+	</select>
+	<select id="selectBoardList" parameterType="PaginationInfo" resultType="FreeBoardVO">
+		WITH FREEBOARDLISTVIEW AS (
+			SELECT
+				 BO_NO
+			    , BO_TITLE
+			    , BO_WRITER
+			    , BO_IP
+			    , BO_MAIL
+			    , BO_PASS
+			    , BO_CONTENT
+			    , BO_DATE
+			    , BO_HIT
+			    , (SELECT COUNT(*) FROM ATTATCH WHERE BO_NO = FREEBOARD.BO_NO) FILE_CNT
+			FROM FREEBOARD
+			<include refid="searchFrag" />
+			ORDER BY BO_NO DESC
+		)
+			SELECT A.*
+			FROM (SELECT ROWNUM RNUM
+			    		, FREEBOARDLISTVIEW.*
+					FROM
+						FREEBOARDLISTVIEW
+				) A
+			<![CDATA[
+				WHERE RNUM >= #{startRow} AND RNUM <= #{endRow}
+			]]>
+	</select>
+	
+	<sql id="searchFrag">
+		<where>
+	    	<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(simpleCondition.searchWord)">
+	    		<choose>
+	    			<when test="simpleCondition.searchType eq 'title'">
+	    				INSTR(BO_TITLE, #{simpleCondition.searchWord}) > 0
+	    			</when>
+	    			<when test="simpleCondition.searchType eq 'writer'">
+	    				INSTR(BO_WRITER, #{simpleCondition.searchWord}) > 0
+	    			</when>
+	    			<when test="simpleCondition.searchType eq 'content'">
+	    				INSTR(BO_CONTENT, #{simpleCondition.searchWord}) > 0
+	    			</when>
+	    			<otherwise>
+	    				INSTR(BO_TITLE, #{simpleCondition.searchWord}) > 0
+    				OR
+	    				INSTR(BO_WRITER, #{simpleCondition.searchWord}) > 0
+    				OR
+	    				INSTR(BO_CONTENT, #{simpleCondition.searchWord}) > 0
+	    			</otherwise>
+	    		</choose>
+	    	</if>
+	    </where>
+	</sql>	
+	
+	<update id="incrementBoard" parameterType="int">
+		UPDATE
+			FREEBOARD
+		SET
+			BO_HIT = BO_HIT + 1
+		WHERE
+			BO_NO = #{boNo}
+	</update>
+	
+	<select id="selectBoard" parameterType="int" resultMap="board">
+		SELECT
+		    FREEBOARD.BO_NO ABO_NO
+		    , BO_TITLE
+		    , BO_WRITER
+		    , BO_IP
+		    , BO_MAIL
+		    , BO_PASS
+		    , BO_CONTENT
+		    , BO_DATE
+		    , BO_HIT
+		    , ATTATCH.BO_NO
+		    , ATT_NO
+		    , ATT_FILENAME
+		    , ATT_SAVENAME
+		    , ATT_MIME
+		    , ATT_FILESIZE
+		    , ATT_FANCYSIZE
+		    , ATT_DOWNLOAD
+		FROM
+		    FREEBOARD LEFT OUTER JOIN ATTATCH ON (FREEBOARD.BO_NO = ATTATCH.BO_NO)
+		WHERE
+			FREEBOARD.BO_NO = #{boNo}
+	</select>
+	
+	<insert id="insertBoard" parameterType="FreeBoardVO">
+		<selectKey order="BEFORE" keyProperty="boNo" resultType="int">
+			SELECT FREEBOARD_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO FREEBOARD (
+		    BO_NO
+		    , BO_TITLE
+		    , BO_WRITER
+		    , BO_IP
+		    , BO_MAIL
+		    , BO_PASS
+		    , BO_CONTENT
+		) VALUES (
+			#{boNo, jdbcType=NUMERIC}
+			, #{boTitle, jdbcType=VARCHAR}
+			, #{boWriter, jdbcType=VARCHAR}
+			, #{boIp, jdbcType=VARCHAR}
+			, #{boMail, jdbcType=VARCHAR}
+			, #{boPass, jdbcType=VARCHAR}
+			, #{boContent, jdbcType=CLOB}
+		)
+	</insert>
+	<select id="checkBoard" parameterType="FreeBoardVO" resultType="FreeBoardVO">
+		SELECT
+			BO_NO
+			, BO_TITLE
+		    , BO_WRITER
+		    , BO_IP
+		    , BO_MAIL
+		    , BO_PASS
+		    , BO_CONTENT
+		    , BO_DATE
+		    , BO_HIT
+		FROM
+			FREEBOARD
+		WHERE
+			BO_NO = #{boNo}
+		AND
+			BO_PASS = #{boPass}
+	</select>
+	<update id="updateBoard" parameterType="FreeBoardVO">
+		UPDATE FREEBOARD
+			
+		WHERE
+			BO_NO = #{boNo}
+	</update>
+	
+</mapper>

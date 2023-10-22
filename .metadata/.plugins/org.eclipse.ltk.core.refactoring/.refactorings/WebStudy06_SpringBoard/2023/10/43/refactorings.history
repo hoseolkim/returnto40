@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Change method &apos;public void com.springboard.board.service.BoardService.updateBoard(FreeBoardVO board)&apos; to &apos;public void modifyBoard(FreeBoardVO board)&apos;&#x0D;&#x0A;- Original project: &apos;WebStudy06_SpringBoard&apos;&#x0D;&#x0A;- Original element: &apos;com.springboard.board.service.BoardService.updateBoard(...)&apos;&#x0D;&#x0A;- New name: &apos;modifyBoard&apos;" delegate="false" deprecate="true" description="Change method &apos;updateBoard&apos;" flags="589830" id="org.eclipse.jdt.ui.change.method.signature" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.springboard.board.service{BoardService.java[BoardService~updateBoard~QFreeBoardVO;" name="modifyBoard" parameter1="FreeBoardVO board 0 FreeBoardVO board false" stamp="1697973527773" version="1.0"/>
+</session>

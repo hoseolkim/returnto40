@@ -1,0 +1,25 @@
+package com.springboard.board.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.springboard.board.vo.FreeBoardVO;
+
+@Controller
+@RequestMapping("/board/{boNo}")
+public class BoardDeleteController {
+	@DeleteMapping
+	public String deleteBoard(
+		FreeBoardVO board
+		, RedirectAttributes redirectAttributes
+		, SessionStatus sessionStatus
+	) {
+		String viewName = null;
+		
+		
+		return viewName;
+	}
+}

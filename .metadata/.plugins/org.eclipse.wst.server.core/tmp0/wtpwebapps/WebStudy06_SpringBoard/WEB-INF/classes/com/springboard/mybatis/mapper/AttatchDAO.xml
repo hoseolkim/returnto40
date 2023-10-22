@@ -52,4 +52,9 @@
 			ATT_NO = #{attNo}
 	</select>
 	
+	<delete id="deleteAttatch" parameterType="int">
+		DELETE FROM ATTATCH
+		WHERE BO_NO = #{boNo}
+	</delete>
+	
 </mapper>

@@ -9,6 +9,6 @@ import com.springboard.board.vo.AttatchVO;
 public interface AttatchDAO {
 	public int insertAttatch(AttatchVO attatch);
 	public AttatchVO selectAttatch(@Param("attNo") int attNo);
-	public int deleteAttatch(int attNo);
 	public int incrementDowncount(@Param("attNo") int attNo);
+	public int deleteAttatch(@Param("boNo") int boNo);
 }
