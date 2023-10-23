@@ -12,6 +12,8 @@
 		<config>src/main/resources/com/springboard/spring/conf/mapper-context.xml</config>
 		<config>src/main/resources/com/springboard/spring/conf/message-context.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/view-controller.xml</config>
+		<config>src/main/resources/com/springboard/spring/conf/aop-context.xml</config>
+		<config>src/main/resources/com/springboard/spring/conf/security-context.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/servlet-context.xml</config>

@@ -10,5 +10,5 @@ public interface AttatchDAO {
 	public int insertAttatch(AttatchVO attatch);
 	public AttatchVO selectAttatch(@Param("attNo") int attNo);
 	public int incrementDowncount(@Param("attNo") int attNo);
-	public int deleteAttatch(@Param("boNo") int boNo);
+	public int deleteAttatch(@Param("attNo") int attNo);
 }

@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.groups.Default;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,7 +26,7 @@ import lombok.ToString;
 public class FreeBoardVO implements Serializable{
 	private Integer rnum;
 	
-	@NotNull(groups = UpdateGroup.class)
+	@NotNull(groups = {UpdateGroup.class,DeleteGroup.class})
 	private Integer boNo;
 	
 	@NotBlank
@@ -43,7 +44,7 @@ public class FreeBoardVO implements Serializable{
 	private Integer fileCnt;
 	
 	@JsonIgnore
-	@NotBlank
+	@NotBlank(groups = {Default.class,DeleteGroup.class})
 	private transient String boPass;
 	@ToString.Exclude
 	private String boContent;

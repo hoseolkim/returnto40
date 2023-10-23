@@ -1,16 +1,21 @@
 package com.springboard.board.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.springboard.board.BoardNotFoundException;
+import com.springboard.board.InvalidPasswordException;
 import com.springboard.board.dao.AttatchDAO;
 import com.springboard.board.dao.BoardDAO;
 import com.springboard.board.vo.AttatchVO;
@@ -19,6 +24,9 @@ import com.springboard.paging.vo.PaginationInfo;
 
 @Service
 public class BoardServiceImpl implements BoardService {
+	
+	@Inject
+	private PasswordEncoder passwordEncoder;
 	
 	@Inject
 	private BoardDAO boardDAO;
@@ -37,6 +45,9 @@ public class BoardServiceImpl implements BoardService {
 					atch.setBoNo(board.getBoNo());
 					attatchDAO.insertAttatch(atch);
 					atch.saveTo(boFiles.getFile());
+					if(1==1) {
+						throw new IOException("강제로 발생시킨 예외!!!!!");
+					}
 				}catch(IOException e) {
 					throw new RuntimeException(e);
 				}
@@ -44,8 +55,12 @@ public class BoardServiceImpl implements BoardService {
 		}
 	}
 	
+//	@Transactional
 	@Override
 	public void createBoard(FreeBoardVO board) {
+		String plain = board.getBoPass();
+		String encoded = passwordEncoder.encode(plain);
+		board.setBoPass(encoded);
 		boardDAO.insertBoard(board);
 		processBoFiles(board);
 	}
@@ -82,29 +97,47 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.incrementBoard(board.getBoNo());
 		board.setBoHit(board.getBoHit()+1);
 	}
-
+//	@Transactional
 	@Override
 	public void modifyBoard(FreeBoardVO board) {
-		FreeBoardVO target = boardDAO.checkBoard(board);
-		if(target == null) {
-			throw new BoardNotFoundException(HttpStatus.FORBIDDEN);
+		FreeBoardVO target = auth(board);
+		if(target != null) {
+			boardDAO.updateBoard(board);
+			processDeleteAttatches(board);
+			processBoFiles(board);
 		}
-		boardDAO.updateBoard(board);
-		attatchDAO.deleteAttatch(board.getBoNo());
-		processBoFiles(board);
 	}
-
+//	@Transactional
 	@Override
 	public void deleteBoard(FreeBoardVO board) {
-		FreeBoardVO target = boardDAO.checkBoard(board);
-		if(target == null) {
-			throw new BoardNotFoundException(HttpStatus.FORBIDDEN);
+		FreeBoardVO target = auth(board);
+		if(target != null) {
+			processDeleteAttatches(board);
+			boardDAO.deleteBoard(board.getBoNo());
 		}
-		attatchDAO.deleteAttatch(board.getBoNo());
-		boardDAO.deleteBoard(board.getBoNo());
 	}
-
 	
+	private void processDeleteAttatches(FreeBoardVO board) {
+		FreeBoardVO saved = boardDAO.selectBoard(board.getBoNo());
+		saved.getAttatchList().forEach(atch->{
+			try {
+				attatchDAO.deleteAttatch(atch.getAttNo());
+				FileUtils.deleteQuietly(new File(boFiles.getFile(), atch.getAttSavename()));
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		});
+	}
 	
+	private FreeBoardVO auth(FreeBoardVO board) {
+		FreeBoardVO saved = boardDAO.selectBoard(board.getBoNo());
+		String encoded = saved.getBoPass();
+		String raw = board.getBoPass();
+		if(passwordEncoder.matches(raw, encoded)) {
+			return saved;
+		}else {
+			throw new InvalidPasswordException();
+		}
+	}
 	
 }

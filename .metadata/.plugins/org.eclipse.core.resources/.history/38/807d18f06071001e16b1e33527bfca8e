@@ -1,0 +1,11 @@
+package com.springboard.advice;
+
+/**
+ * business logic 의 실행에 소요된 시간과,
+ * 해당 로직으로 전달되는 파라미터를 로그로 출력하기 위한 advice
+ * 
+ *
+ */
+public class LoggingAdvice {
+
+}

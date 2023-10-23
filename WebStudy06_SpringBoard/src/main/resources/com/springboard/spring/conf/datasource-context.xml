@@ -28,7 +28,7 @@
 	/>
 	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 		id="transactionManager"
-		p:dataSource-ref="dataSource" 
+		p:dataSource-ref="dataSource"
 	/>
 	
 	<!-- 연상배열구조를 사용할 수 있다. -->

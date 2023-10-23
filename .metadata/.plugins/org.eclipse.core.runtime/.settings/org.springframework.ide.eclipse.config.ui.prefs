@@ -14,10 +14,12 @@
 //com.springsource.config.ui.prefs.activePageIndex\:/WebStudy05_SpringMVC/src/main/resources/kr/or/ddit/spring/mapper-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
 //com.springsource.config.ui.prefs.activePageIndex\:/WebStudy05_SpringMVC/src/main/resources/kr/or/ddit/spring/message-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
 //com.springsource.config.ui.prefs.activePageIndex\:/WebStudy05_SpringMVC/src/main/webapp/WEB-INF/spring/servlet-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/WebStudy06_SpringBoard/src/main/resources/com/springboard/spring/conf/aop-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
 //com.springsource.config.ui.prefs.activePageIndex\:/WebStudy06_SpringBoard/src/main/resources/com/springboard/spring/conf/application-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
 //com.springsource.config.ui.prefs.activePageIndex\:/WebStudy06_SpringBoard/src/main/resources/com/springboard/spring/conf/datasource-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
 //com.springsource.config.ui.prefs.activePageIndex\:/WebStudy06_SpringBoard/src/main/resources/com/springboard/spring/conf/mapper-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
 //com.springsource.config.ui.prefs.activePageIndex\:/WebStudy06_SpringBoard/src/main/resources/com/springboard/spring/conf/message-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/WebStudy06_SpringBoard/src/main/resources/com/springboard/spring/conf/security-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
 //com.springsource.config.ui.prefs.activePageIndex\:/WebStudy06_SpringBoard/src/main/webapp/WEB-INF/spring/servlet-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
 //com.springsource.config.ui.prefs.activePageIndex\:/WebStudy06_SpringBoard/src/main/webapp/WEB-INF/spring/view-controller.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
 com.springsource.config.ui.prefs.tabs.dialog=always

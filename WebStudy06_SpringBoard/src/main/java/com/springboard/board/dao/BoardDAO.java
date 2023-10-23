@@ -19,7 +19,13 @@ public interface BoardDAO {
 	
 	public int updateBoard(FreeBoardVO board);
 	
+	/**
+	 * 게시글 수정과 삭제에서 사용될 인증
+	 * @param board
+	 * @return 인증에 성공했을 경우, 해당 게시글을 반환, 실패한 경우 null값 반환
+	 */
 	public FreeBoardVO checkBoard(FreeBoardVO board);
 	
 	public int deleteBoard(@Param("boNo") int boNo);
+	
 }

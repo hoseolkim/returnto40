@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+
+
 <table class="table table-bordered">
 
 	<tr>
@@ -64,15 +67,16 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action='<c:url value="/board/${boNo }" />' id="deleteForm" method="post">
+		<security:csrfInput/>
 	      <div class="modal-body">
 	      	<input type="hidden" name="_method" value="delete"/> 
-	      	<input type="hidden" name="boNo" value="${boNo }"/>
 	        <input type="password" name="boPass" class="form-control" />
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 	        <button type="submit" class="btn btn-primary">삭제</button>
 	      </div>
+	      
       </form>
     </div>
   </div>

@@ -54,7 +54,7 @@
 	
 	<delete id="deleteAttatch" parameterType="int">
 		DELETE FROM ATTATCH
-		WHERE BO_NO = #{boNo}
+		WHERE ATT_NO = #{attNo}
 	</delete>
 	
 </mapper>

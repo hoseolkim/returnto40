@@ -11,15 +11,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.springboard.board.InvalidPasswordException;
 import com.springboard.board.service.BoardService;
 import com.springboard.board.vo.FreeBoardVO;
 import com.springboard.grouphint.UpdateGroup;
 
 @Controller
 @RequestMapping("/board/{boNo}/edit")
+@SessionAttributes(names = "board")
 public class BoardUpdateController {
 	
 	@Inject
@@ -30,8 +33,11 @@ public class BoardUpdateController {
 		@PathVariable int boNo
 		, Model model
 	) {
-		FreeBoardVO board = service.retrieveBoard(boNo);
-		model.addAttribute("board", board);
+		FreeBoardVO board = null;
+		if(!model.containsAttribute("board")) {
+			board = service.retrieveBoard(boNo);
+			model.addAttribute("board", board);
+		}
 		return "board/boardEdit";
 	}
 	
@@ -47,15 +53,15 @@ public class BoardUpdateController {
 			try {
 				service.modifyBoard(board);
 				sessionStatus.setComplete();
-				viewName = "redirect:/board/" + board.getBoNo();
-			} catch (Exception e) {
-				redirectAttributes.addFlashAttribute("message", "비밀번호가 틀렸어용");
-				viewName = "redirect:/board/boardEdit";
+				viewName = "redirect:/board/{boNo}";
+			} catch (InvalidPasswordException e) {
+				redirectAttributes.addFlashAttribute("message", e.getMessage());
+				viewName = "redirect:/board/{boNo}/edit";
 			}
 		}else {
 			String attrName =BindingResult.MODEL_KEY_PREFIX + "board";
 			redirectAttributes.addFlashAttribute(attrName, errors);
-			viewName = "redirect:/board/boardEdit";
+			viewName = "redirect:/board/{boNo}/edit";
 		}
 		return viewName;
 	}

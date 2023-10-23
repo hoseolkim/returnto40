@@ -7,7 +7,6 @@
 <table class="table table-bordered">
 	<form:form modelAttribute="board" enctype="multipart/form-data" >
 		<input type="hidden" name="_method" value="put" readonly/>
-		<form:input type="hidden" path="boNo" class="form-control" readonly="true" />
 		<tr>
 			<th><label for="boTitle">제목</label></th>
 			<td><form:input type="text" path="boTitle" class="form-control"

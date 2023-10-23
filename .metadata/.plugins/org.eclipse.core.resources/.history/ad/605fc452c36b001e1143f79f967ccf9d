@@ -1,5 +1,0 @@
-package kr.or.ddit.common.exception;
-
-public class BadRequestException {
-
-}

@@ -1,0 +1,22 @@
+package com.springboard.security;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+/**
+ * 암호화 구조를 이용한 데이터 보호
+ * 
+ * 단방향 암호화 : 암호화는 가능하나 복호화는 불가능. ex) 비밀번호 암호화
+ * 양방향 암호화 : 암복호화 가능한 방식. ex) e-book(DRM), 전자서명
+ * 		
+ *
+ */
+class PasswordEncoderTest {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}
