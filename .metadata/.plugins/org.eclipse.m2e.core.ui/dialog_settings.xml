@@ -48,11 +48,13 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="spring.practice.ksh"/>
 			<item value="kr.or.ddit"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="AlbaManage"/>
 			<item value="SpringIocLab"/>
 			<item value="MemoWeb"/>
 			<item value="MemoManagementApplication"/>

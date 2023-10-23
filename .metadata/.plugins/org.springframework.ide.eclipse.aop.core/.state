@@ -2,5 +2,6 @@
 <aop-reference-model>
 <aop-project name="EgovWebDummy"/>
 <aop-project name="WebStudy06_SpringBoard"/>
+<aop-project name="AlbaManage"/>
 <aop-project name="WebStudy05_SpringMVC"/>
 </aop-reference-model>
