@@ -13,8 +13,8 @@
 	
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory" 
 		p:dataSource-ref="dataSource"
-		p:mapperLocations="classpath:com/springboard/mybatis/mapper/*.xml"
-		p:typeAliasesPackage="com.springboard.**.vo"
+		p:mapperLocations="classpath:spring/practice/ksh//mybatis/mapper/*.xml"
+		p:typeAliasesPackage="spring.practice.ksh.**.vo"
 		p:configuration-ref="configuration"
 	/>
 	

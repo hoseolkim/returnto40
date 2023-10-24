@@ -1,0 +1,32 @@
+package spring.practice.ksh.alba.vo;
+
+import java.util.UUID;
+
+import org.springframework.web.multipart.MultipartFile;
+
+public class AlbaVO {
+	private String alId;
+	private String alName;
+	private Integer alAge;
+	private String alZip;
+	private String alAddr1;
+	private String alAddr2;
+	private String alHp;
+	private String grCode;
+	private String alGen;
+	private String alMail;
+	private String alCareer;
+	private String alSpec;
+	private String alDesc;
+	private String alImg;
+	
+	private MultipartFile alImage;
+	
+	public void setAlImage(MultipartFile alImage) {
+		if(alImage != null && !alImage.isEmpty()) {
+			this.alImage = alImage;
+			this.alImg = UUID.randomUUID().toString();
+		}
+	}
+	
+}

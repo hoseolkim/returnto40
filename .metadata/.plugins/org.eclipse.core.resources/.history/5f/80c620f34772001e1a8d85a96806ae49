@@ -1,0 +1,11 @@
+package spring.practice.ksh.lic.vo;
+
+import lombok.EqualsAndHashCode;
+
+@EqualsAndHashCode(of = {"alId,licCode"})
+public class LicAlba {
+	private String alId;
+	private String licCode;
+	private String licDate;
+	private String licImg;
+}
