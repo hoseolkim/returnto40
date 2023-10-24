@@ -1,0 +1,5 @@
+package spring.practice.ksh.alba.dao;
+
+public interface AlbaDAO {
+
+}

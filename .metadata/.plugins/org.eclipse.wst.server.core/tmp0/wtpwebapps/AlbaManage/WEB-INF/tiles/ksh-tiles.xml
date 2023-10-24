@@ -18,8 +18,11 @@
 		<put-attribute name="content" value="/WEB-INF/jsp/index.jsp" />
 	</definition>
 	
-	<definition name="board/*" extends="abstractDef">
-		<put-attribute name="content" value="/WEB-INF/jsp/board/{1}.jsp" />
+	<definition name="alba/*" extends="abstractDef">
+		<put-attribute name="content" value="/WEB-INF/jsp/alba/{1}.jsp" />
+	</definition>
+	<definition name="license/*" extends="abstractDef">
+		<put-attribute name="content" value="/WEB-INF/jsp/license/{1}.jsp" />
 	</definition>
 
 </tiles-definitions>       

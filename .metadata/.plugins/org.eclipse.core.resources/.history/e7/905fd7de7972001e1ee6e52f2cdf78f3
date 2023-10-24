@@ -1,0 +1,5 @@
+package spring.practice.ksh.alba.service;
+
+public class AlbaServiceImpl {
+
+}

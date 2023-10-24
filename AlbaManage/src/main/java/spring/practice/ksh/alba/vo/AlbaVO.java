@@ -3,12 +3,14 @@ package spring.practice.ksh.alba.vo;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Set;
 import java.util.UUID;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import spring.practice.ksh.lic.vo.LicAlba;
 
 @Data
 @EqualsAndHashCode(of = "alId")
@@ -27,6 +29,9 @@ public class AlbaVO implements Serializable {
 	private String alSpec;
 	private String alDesc;
 	private String alImg;
+	
+	private Set<LicAlba> licSet;
+	
 	
 	private MultipartFile alImage;
 	

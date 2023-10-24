@@ -4,14 +4,14 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
     
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap w-100 p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="<c:url value='/'/>">Company305</a>
+  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="<c:url value='/'/>">어쩌구 저쩌구</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <ul class="nav px-3 col">
 	<security:authorize url="/board">
 		<li class="nav-item text-nowrap">
-			<a class="nav-link text-white" href="<c:url value='/board'/>">자유게시판</a>
+			<a class="nav-link text-white" href="<c:url value='/alba'/>">알바 관리</a>
 		</li>
 	</security:authorize>
     <li class="nav-item text-nowrap">

@@ -1,0 +1,25 @@
+package spring.practice.ksh.alba.controller;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import spring.practice.ksh.alba.service.AlbaService;
+
+@Controller
+@RequestMapping("/alba")
+public class AlbaController {
+	
+	@Inject
+	private AlbaService service;
+	
+	@GetMapping
+	public String albaList(
+		
+	) {
+		return "alba/albaList";
+	}
+	
+}

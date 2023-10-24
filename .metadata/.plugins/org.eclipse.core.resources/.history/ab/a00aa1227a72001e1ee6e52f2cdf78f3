@@ -1,0 +1,16 @@
+package spring.practice.ksh.alba.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/alba")
+public class AlbaController {
+	
+	@GetMapping
+	public String albaList() {
+		return "alba/albaList";
+	}
+	
+}

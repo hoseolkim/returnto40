@@ -1,0 +1,17 @@
+package spring.practice.ksh.alba.service;
+
+import org.springframework.stereotype.Service;
+
+import spring.practice.ksh.alba.vo.AlbaVO;
+import spring.practice.ksh.paging.vo.PaginationInfo;
+
+@Service
+public class AlbaServiceImpl implements AlbaService{
+
+	@Override
+	public void retrieveAlbaList(PaginationInfo<AlbaVO> paging) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
