@@ -1,6 +1,0 @@
-package kr.or.ddit.buyer.controller;
-
-public class Snippet {
-	<c:url value="/buyer/P10101" />
-}
-
